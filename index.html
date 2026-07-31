@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Mark that JS is live *before* CSS, so reveals only hide when there's something to un-hide them.
+     No JS, a crawler, or a headless render never adds this class, and every section stays visible. -->
+<script>document.documentElement.classList.add('js');</script>
+<title>reMaestro — the self-hosted brain for your whole home theatre</title>
+<meta name="description" content="One conductor for every device in your home theatre. reMaestro controls your AV receiver, projector, TVs, streamers, lights and more, over IR, serial, Bluetooth and the network. Self-hosted on your own Raspberry Pi. No cloud. No lock-in." />
+<meta name="theme-color" content="#1b1a18" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="reMaestro — conduct your whole home theatre" />
+<meta property="og:description" content="One self-hosted brain for every screen, speaker and source. 43+ device families, over IR / serial / Bluetooth / network. Runs on your own Pi." />
+<meta property="og:url" content="https://remaestro.app" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ambient stage light -->
+<div class="stagelight" aria-hidden="true"></div>
+
+<header class="nav" id="top">
+  <a class="brand" href="#top" aria-label="reMaestro home">
+    <span class="brand-mark" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </span>
+    <span class="brand-name">re<b>Maestro</b></span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#control">Control</a>
+    <a href="#features">Features</a>
+    <a href="#compat">Compatibility</a>
+    <a href="#selfhosted">Self-hosted</a>
+  </nav>
+  <a class="btn btn-ghost nav-cta" href="#start">Get started</a>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="hero-copy reveal">
+      <p class="hero-kicker mono">Self-hosted AV &amp; smart-home control</p>
+      <h1 id="hero-h" class="display">Conduct your whole<br /><span class="amber">home theatre.</span></h1>
+      <p class="lede">One brain for every screen, speaker and source in the house, over IR, serial,
+        Bluetooth and the network. It runs on <em>your</em> Raspberry Pi. No cloud. No lock-in.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#control">See it in action</a>
+        <a class="btn btn-ghost" href="#start">Get started <span aria-hidden="true">→</span></a>
+      </div>
+      <ul class="hero-stats" aria-label="At a glance">
+        <li><b class="mono">43+</b><span>device families</span></li>
+        <li><b class="mono">4</b><span>ways in: IR · serial · BT · network</span></li>
+        <li><b class="mono">$80</b><span>runs on a Pi</span></li>
+      </ul>
+    </div>
+
+    <!-- hero product shot: the console, recreated -->
+    <div class="hero-shot reveal" aria-hidden="true">
+      <div class="frame frame-browser">
+        <div class="frame-bar"><i></i><i></i><i></i><span class="mono">remaestro.local</span></div>
+        <div class="console">
+          <div class="console-now">
+            <span class="pill on">On now</span>
+            <div class="eq" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
+            <div class="console-now-txt"><b>Movie Night</b><small>Projector · Denon · Apple TV · Lights 20%</small></div>
+          </div>
+          <div class="console-grid">
+            <div class="tile tile-lg"><span class="tile-ico">▶</span><b>Watch a Movie</b><small>1 tap · 4 devices</small></div>
+            <div class="tile"><span class="tile-ico">📺</span><b>Living Room TV</b><small>HDMI 2</small></div>
+            <div class="tile"><span class="tile-ico">🔊</span><b>Denon AVR</b><small>−24 dB</small></div>
+            <div class="tile"><span class="tile-ico">💡</span><b>Sconces</b><small>20%</small></div>
+            <div class="tile"><span class="tile-ico">🎬</span><b>Projector</b><small>Warming…</small></div>
+            <div class="tile"><span class="tile-ico">📡</span><b>TV Guide</b><small>What's on</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="shot-glow" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ============ THE TURN ============ -->
+  <section class="turn" aria-label="The problem">
+    <p class="turn-line reveal">Five remotes. Five apps. Five ecosystems that <s>don't</s> won't talk.</p>
+    <p class="turn-answer reveal"><span class="amber">reMaestro</span> makes them one instrument — and hands you the baton.</p>
+  </section>
+
+  <!-- ============ CONTROL / product ============ -->
+  <section class="section" id="control" aria-labelledby="control-h">
+    <div class="section-head reveal">
+      <h2 class="display">Everything, from one place</h2>
+      <p class="section-sub">Power, volume, inputs, transport, apps, lights. The whole rack answers to one
+        surface that's actually a pleasure to use.</p>
+    </div>
+
+    <div class="showcase">
+      <!-- Activities -->
+      <article class="feat reveal">
+        <div class="feat-copy">
+          <h3>Activities that just work</h3>
+          <p>“Watch a Movie” dims the sconces, drops the screen, wakes the projector, switches the receiver to
+            the right input and opens the app, in the right order, every time. You press one thing.</p>
+        </div>
+        <div class="feat-shot">
+          <div class="activity-flow" aria-hidden="true">
+            <span class="step"><i>💡</i>Lights 20%</span>
+            <span class="arrow">→</span>
+            <span class="step"><i>🎬</i>Projector on</span>
+            <span class="arrow">→</span>
+            <span class="step"><i>🔊</i>AVR · HDMI 2</span>
+            <span class="arrow">→</span>
+            <span class="step done"><i>▶</i>Apple TV</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- EPG / TV Guide -->
+      <article class="feat feat-wide reveal">
+        <div class="feat-copy">
+          <h3>A TV guide as good as they come</h3>
+          <p>Fold an HDHomeRun tuner, an XMLTV feed and an Xtream account into one channels-by-time grid, with
+            a live “now” line, artwork, and a tap to watch. Beautiful enough to just browse.</p>
+        </div>
+        <div class="feat-shot">
+          <div class="epg" aria-hidden="true">
+            <div class="epg-head">
+              <div class="epg-corner mono">Now</div>
+              <div class="epg-times">
+                <span>7:00</span><span>7:30</span><span>8:00</span><span>8:30</span><span>9:00</span>
+              </div>
+            </div>
+            <div class="epg-body">
+              <div class="epg-nowline"></div>
+              <div class="epg-row"><div class="epg-ch"><b class="mono">3.1</b><span>PBS</span></div>
+                <div class="epg-track"><span class="prog live" style="left:0;width:34%">Nature</span><span class="prog" style="left:34%;width:40%">Nova</span><span class="prog" style="left:74%;width:26%">Frontline</span></div></div>
+              <div class="epg-row"><div class="epg-ch"><b class="mono">5.1</b><span>NBC</span></div>
+                <div class="epg-track"><span class="prog live" style="left:0;width:50%">Sunday Night Football</span><span class="prog" style="left:50%;width:50%">Local News</span></div></div>
+              <div class="epg-row"><div class="epg-ch"><b class="mono">7.1</b><span>ABC</span></div>
+                <div class="epg-track"><span class="prog live" style="left:0;width:26%">Jeopardy!</span><span class="prog" style="left:26%;width:48%">The Bachelor</span><span class="prog" style="left:74%;width:26%">News</span></div></div>
+              <div class="epg-row"><div class="epg-ch"><b class="mono">12.1</b><span>MAX</span></div>
+                <div class="epg-track"><span class="prog live" style="left:0;width:64%">Dune: Part Two</span><span class="prog" style="left:64%;width:36%">The Batman</span></div></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Custom remotes -->
+      <article class="feat reveal">
+        <div class="feat-copy">
+          <h3>Design your own remote</h3>
+          <p>Lay out exactly the buttons you want, bound to real device commands (d-pad, transport, the keys
+            that matter), and it works on every phone, tablet and screen in the house.</p>
+        </div>
+        <div class="feat-shot">
+          <div class="frame frame-phone" aria-hidden="true">
+            <div class="remote">
+              <div class="remote-top"><span class="rk power">⏻</span><span class="rk">⌂</span><span class="rk">↩</span></div>
+              <div class="dpad"><span class="up">▲</span><span class="left">◀</span><span class="ok">OK</span><span class="right">▶</span><span class="down">▼</span></div>
+              <div class="remote-transport"><span class="rk">⏮</span><span class="rk big">⏯</span><span class="rk">⏭</span></div>
+              <div class="remote-rockers"><span class="rocker">VOL<b>＋</b><b>－</b></span><span class="rocker">CH<b>＋</b><b>－</b></span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Apps + voice + zones triple -->
+      <div class="triple reveal">
+        <div class="mini">
+          <span class="mini-ico" aria-hidden="true">▦</span>
+          <h4>Launch any app</h4>
+          <p>Netflix, YouTube, Plex: jump straight in on Apple TV, Roku, Fire TV, a webOS TV, and more.</p>
+        </div>
+        <div class="mini">
+          <span class="mini-ico" aria-hidden="true">🎙</span>
+          <h4>Just say it</h4>
+          <p>“Play the game in the den.” Voice from a browser, a mic, or a room satellite, routed by rules.</p>
+        </div>
+        <div class="mini">
+          <span class="mini-ico" aria-hidden="true">◫</span>
+          <h4>Every room</h4>
+          <p>Zones keep the theatre, the den and the kitchen each doing their own thing, all from one hub.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMPATIBILITY ============ -->
+  <section class="section compat" id="compat" aria-labelledby="compat-h">
+    <div class="section-head reveal">
+      <h2 id="compat-h" class="display">If it has a remote, it probably answers</h2>
+      <p class="section-sub">43 device families and counting: real drivers, not a lowest-common-denominator
+        blaster. And four ways to reach them, so even the old serial gear is in.</p>
+    </div>
+
+    <div class="transports reveal">
+      <span class="tp"><b class="mono">IR</b> infrared blasters</span>
+      <span class="tp"><b class="mono">RS-232</b> serial</span>
+      <span class="tp"><b class="mono">BT</b> Bluetooth &amp; HID</span>
+      <span class="tp"><b class="mono">NET</b> the network</span>
+    </div>
+
+    <div class="brandwall" aria-label="Supported device families">
+      <div class="brand-marquee reveal">
+        <div class="marquee-track">
+          <span>Denon</span><span>Marantz</span><span>Anthem</span><span>Yamaha</span><span>Sony</span><span>Samsung</span><span>LG&nbsp;webOS</span><span>Epson</span><span>BenQ</span><span>Apple&nbsp;TV</span><span>Roku</span><span>Fire&nbsp;TV</span><span>Android&nbsp;TV</span><span>Xbox</span><span>PlayStation</span><span>Sonos</span><span>HEOS</span><span>Bose</span>
+          <span aria-hidden="true">Denon</span><span aria-hidden="true">Marantz</span><span aria-hidden="true">Anthem</span><span aria-hidden="true">Yamaha</span><span aria-hidden="true">Sony</span><span aria-hidden="true">Samsung</span><span aria-hidden="true">LG&nbsp;webOS</span><span aria-hidden="true">Epson</span><span aria-hidden="true">BenQ</span><span aria-hidden="true">Apple&nbsp;TV</span><span aria-hidden="true">Roku</span><span aria-hidden="true">Fire&nbsp;TV</span><span aria-hidden="true">Android&nbsp;TV</span><span aria-hidden="true">Xbox</span><span aria-hidden="true">PlayStation</span><span aria-hidden="true">Sonos</span><span aria-hidden="true">HEOS</span><span aria-hidden="true">Bose</span>
+        </div>
+      </div>
+      <div class="brand-marquee rev reveal">
+        <div class="marquee-track">
+          <span>Philips&nbsp;Hue</span><span>Lutron</span><span>Kodi</span><span>Plex</span><span>Jellyfin</span><span>TiVo</span><span>DirecTV</span><span>HDHomeRun</span><span>Home&nbsp;Assistant</span><span>Hubitat</span><span>WattBox</span><span>Zidoo</span><span>VLC</span><span>PJLink</span><span>Xtream</span><span>XMLTV</span>
+          <span aria-hidden="true">Philips&nbsp;Hue</span><span aria-hidden="true">Lutron</span><span aria-hidden="true">Kodi</span><span aria-hidden="true">Plex</span><span aria-hidden="true">Jellyfin</span><span aria-hidden="true">TiVo</span><span aria-hidden="true">DirecTV</span><span aria-hidden="true">HDHomeRun</span><span aria-hidden="true">Home&nbsp;Assistant</span><span aria-hidden="true">Hubitat</span><span aria-hidden="true">WattBox</span><span aria-hidden="true">Zidoo</span><span aria-hidden="true">VLC</span><span aria-hidden="true">PJLink</span><span aria-hidden="true">Xtream</span><span aria-hidden="true">XMLTV</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="compat-foot reveal mono">…and if yours isn't here yet, the driver model is open. Write it once, it works everywhere.</p>
+  </section>
+
+  <!-- ============ HARMONY (successor angle) ============ -->
+  <section class="harmony" aria-labelledby="harmony-h">
+    <div class="harmony-inner reveal">
+      <h2 id="harmony-h" class="display">All in <span class="amber">harmony</span> again.</h2>
+      <p class="harmony-lede">Remember the one universal remote that finally ran the whole living room? It got
+        discontinued. The servers went dark, and a drawer full of hardware went dark with them.</p>
+      <p class="harmony-lede"><b>reMaestro brings the one-remote dream back</b>, and this time it lives on your
+        hardware. Nobody can switch it off but you.</p>
+    </div>
+  </section>
+
+  <!-- ============ SELF-HOSTED ============ -->
+  <section class="section selfhosted" id="selfhosted" aria-labelledby="self-h">
+    <div class="self-grid">
+      <div class="section-head reveal">
+        <h2 id="self-h" class="display">It runs on <span class="amber">your</span> hardware</h2>
+        <p class="section-sub">Flash a Raspberry Pi, plug it into the rack, and it's yours. Your devices, your
+          data, your network. Nothing phones home, nothing needs a subscription, nothing disappears when a
+          company sunsets an app.</p>
+        <ul class="self-list">
+          <li><b>No cloud.</b> Everything stays on your LAN. It works when your internet doesn't.</li>
+          <li><b>An appliance, not a project.</b> Self-updating, self-healing, over-the-air releases.</li>
+          <li><b>Yours to bend.</b> Open drivers, custom remotes, rules and activities, no ceiling.</li>
+        </ul>
+        <a class="btn btn-primary" href="#start">Get started</a>
+      </div>
+      <div class="self-shot reveal" aria-hidden="true">
+        <div class="pi">
+          <div class="pi-board">
+            <span class="pi-chip"></span>
+            <span class="pi-port"></span><span class="pi-port"></span><span class="pi-port"></span>
+            <span class="pi-led"></span>
+          </div>
+          <div class="pi-cable"></div>
+        </div>
+        <div class="pi-caption mono">reMaestro OS · one card · plug &amp; play</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta" id="start" aria-labelledby="cta-h">
+    <div class="cta-inner reveal">
+      <h2 id="cta-h" class="display">Ready to pick up the baton?</h2>
+      <p>reMaestro is a self-hosted control hub for the whole home theatre, and it already works. Flash a Pi,
+        or follow along as it opens up.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#">Read the docs</a>
+        <a class="btn btn-ghost" href="#">Follow the build <span aria-hidden="true">→</span></a>
+      </div>
+      <p class="cta-note mono">Docs &amp; install guide coming to this page.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-brand">
+    <span class="brand-mark small" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+    <span class="brand-name">re<b>Maestro</b></span>
+  </div>
+  <p class="mono">The self-hosted brain for your whole home theatre.</p>
+  <p class="foot-fine">© 2026 reMaestro · self-hosted · no cloud · no lock-in</p>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>
