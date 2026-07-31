@@ -78,11 +78,107 @@
 <div class="sl-heading-wrapper level-h2"><h2 id="transmit-irtx">Transmit (ir.tx)</h2><a class="sl-anchor-link" href="#transmit-irtx"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Transmit (ir.tx)”</span></a></div>
 <p>An IR LED driven through a transistor from a GPIO. Don’t drive the LED straight off a pin — IR LEDs want more
 current than a GPIO should source.</p>
-<div class="expressive-code"><link rel="stylesheet" href="/docs/_astro/ec.w36nc.css"><script type="module" src="/docs/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">ESP32 GPIO ──[1kΩ]── Transistor base (e.g. 2N2222)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">                       </span></span><span style="--0:#d6deeb;--1:#403f53">Collector ── IR LED (–) ; IR LED (+) ──[100Ω]── 5V (or 3V3)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">                       </span></span><span style="--0:#d6deeb;--1:#403f53">Emitter  ── GND</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="ESP32 GPIO ──[1kΩ]── Transistor base (e.g. 2N2222)                       Collector ── IR LED (–) ; IR LED (+) ──[100Ω]── 5V (or 3V3)                       Emitter  ── GND"><div></div></button></div></figure></div>
+<figure style="margin:1.5rem 0">
+<svg role="img" viewBox="0 0 720 360" width="100%" style="max-width:720px;height:auto" aria-label="IR transmit circuit. ESP32 GPIO4 connects through a 1 kilohm resistor to the base of a 2N2222 NPN transistor. The 5 volt pin connects through a 100 ohm resistor to the IR LED anode; the LED cathode connects to the transistor collector; the transistor emitter connects to ground.">
+  <title>IR transmit: ESP32 GPIO driving an IR LED through a 2N2222 transistor</title>
+  <defs>
+    <marker id="ir-tx-amber" markerWidth="9" markerHeight="9" refX="5.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f0a53c"/></marker>
+    <marker id="ir-tx-grey" markerWidth="9" markerHeight="9" refX="5.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#c9cdd6"/></marker>
+  </defs>
+  <rect x="8" y="8" width="704" height="344" rx="14" fill="#171a1f" stroke="#3a4150"/>
+  <rect x="40" y="90" width="150" height="240" rx="10" fill="#2e5b39" stroke="#3f7a4d" stroke-width="2"/>
+  <rect x="70" y="150" width="88" height="70" rx="4" fill="#171a1f" stroke="#3f7a4d"/>
+  <text x="114" y="118" text-anchor="middle" font-size="10" fill="#8b91a0" font-family="system-ui,sans-serif">dev board</text>
+  <text x="114" y="192" text-anchor="middle" font-size="13" fill="#c9cdd6" font-family="system-ui,sans-serif">ESP32</text>
+  <rect x="184" y="114" width="14" height="12" rx="2" fill="#3a4150" stroke="#8b91a0"/>
+  <rect x="184" y="234" width="14" height="12" rx="2" fill="#3a4150" stroke="#8b91a0"/>
+  <rect x="184" y="304" width="14" height="12" rx="2" fill="#3a4150" stroke="#8b91a0"/>
+  <text x="178" y="124" text-anchor="end" font-size="12" font-family="ui-monospace,monospace" fill="#c0574a">5V</text>
+  <text x="178" y="137" text-anchor="end" font-size="9" font-family="ui-monospace,monospace" fill="#8b91a0">or 3V3</text>
+  <text x="178" y="244" text-anchor="end" font-size="12" font-family="ui-monospace,monospace" fill="#f0a53c">GPIO4</text>
+  <text x="178" y="314" text-anchor="end" font-size="12" font-family="ui-monospace,monospace" fill="#c9cdd6">GND</text>
+  <path d="M198,120 H300" fill="none" stroke="#c0574a" stroke-width="2.5"/>
+  <path d="M300,120 l8,0 l6,-8 l8,16 l8,-16 l8,16 l8,-16 l6,8 l8,0" fill="none" stroke="#c0574a" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M360,120 H600" fill="none" stroke="#c0574a" stroke-width="2.5"/>
+  <text x="330" y="106" text-anchor="middle" font-size="12" font-family="ui-monospace,monospace" fill="#c9cdd6">100Ω</text>
+  <path d="M600,120 V150" fill="none" stroke="#c0574a" stroke-width="2.5"/>
+  <path d="M582,150 H618 L600,182 Z" fill="#f0a53c"/>
+  <path d="M580,182 H620" stroke="#c9cdd6" stroke-width="2.5"/>
+  <path d="M600,182 V205" fill="none" stroke="#c0574a" stroke-width="2.5"/>
+  <path d="M624,148 L642,132" fill="none" stroke="#f0a53c" stroke-width="2" marker-end="url(#ir-tx-amber)"/>
+  <path d="M632,160 L650,144" fill="none" stroke="#f0a53c" stroke-width="2" marker-end="url(#ir-tx-amber)"/>
+  <text x="656" y="150" font-size="12" font-family="system-ui,sans-serif" fill="#c9cdd6">IR LED</text>
+  <text x="656" y="166" font-size="10" font-family="system-ui,sans-serif" fill="#8b91a0">→ device</text>
+  <path d="M600,205 V242" fill="none" stroke="#c0574a" stroke-width="2.5"/>
+  <circle cx="600" cy="270" r="28" fill="#1f232b" stroke="#3a4150" stroke-width="2"/>
+  <path d="M588,252 V288" stroke="#c9cdd6" stroke-width="2.5"/>
+  <path d="M588,260 L600,242" fill="none" stroke="#c0574a" stroke-width="2.5"/>
+  <path d="M588,280 L600,298" fill="none" stroke="#c9cdd6" stroke-width="2.5" marker-end="url(#ir-tx-grey)"/>
+  <circle cx="600" cy="242" r="3.5" fill="#c0574a"/>
+  <text x="634" y="266" font-size="12" font-family="system-ui,sans-serif" fill="#c9cdd6">2N2222</text>
+  <text x="634" y="280" font-size="10" font-family="system-ui,sans-serif" fill="#8b91a0">NPN</text>
+  <text x="607" y="234" font-size="10" font-family="ui-monospace,monospace" fill="#8b91a0">C</text>
+  <text x="565" y="258" font-size="10" font-family="ui-monospace,monospace" fill="#8b91a0">B</text>
+  <text x="607" y="312" font-size="10" font-family="ui-monospace,monospace" fill="#8b91a0">E</text>
+  <path d="M198,240 H300" fill="none" stroke="#f0a53c" stroke-width="2.5"/>
+  <path d="M300,240 l8,0 l6,-8 l8,16 l8,-16 l8,16 l8,-16 l6,8 l8,0" fill="none" stroke="#f0a53c" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M360,240 H520 V270 H588" fill="none" stroke="#f0a53c" stroke-width="2.5"/>
+  <text x="330" y="226" text-anchor="middle" font-size="12" font-family="ui-monospace,monospace" fill="#c9cdd6">1kΩ</text>
+  <path d="M600,298 V310 H198" fill="none" stroke="#c9cdd6" stroke-width="2.5"/>
+  <circle cx="198" cy="120" r="3.5" fill="#c0574a"/>
+  <circle cx="198" cy="240" r="3.5" fill="#f0a53c"/>
+  <circle cx="198" cy="310" r="3.5" fill="#c9cdd6"/>
+  <circle cx="520" cy="270" r="3.5" fill="#f0a53c"/>
+  <line x1="250" y1="342" x2="272" y2="342" stroke="#f0a53c" stroke-width="3"/>
+  <text x="278" y="346" font-size="10" font-family="system-ui,sans-serif" fill="#8b91a0">signal</text>
+  <line x1="332" y1="342" x2="354" y2="342" stroke="#c0574a" stroke-width="3"/>
+  <text x="360" y="346" font-size="10" font-family="system-ui,sans-serif" fill="#8b91a0">LED drive / 5V</text>
+  <line x1="470" y1="342" x2="492" y2="342" stroke="#c9cdd6" stroke-width="3"/>
+  <text x="498" y="346" font-size="10" font-family="system-ui,sans-serif" fill="#8b91a0">ground</text>
+</svg>
+<figcaption style="color:#8b91a0;font-size:0.85rem;margin-top:0.5rem">Transmit path: <code>GPIO4</code> → 1&nbsp;kΩ → 2N2222 base; the IR LED draws its current from 5&nbsp;V through 100&nbsp;Ω into the collector, with the emitter to ground — so the pin only switches, it doesn't source the LED current.</figcaption>
+</figure>
 <p>Place the LED where it can see the device’s receiver (or tape it over the window).</p>
 <div class="sl-heading-wrapper level-h2"><h2 id="receive-irrx">Receive (ir.rx)</h2><a class="sl-anchor-link" href="#receive-irrx"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Receive (ir.rx)”</span></a></div>
 <p>A 38 kHz IR receiver module (TSOP-style, three pins):</p>
-<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">Receiver VCC ── 3V3</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">Receiver GND ── GND</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">Receiver OUT ── ESP32 GPIO (input)</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="Receiver VCC ── 3V3Receiver GND ── GNDReceiver OUT ── ESP32 GPIO (input)"><div></div></button></div></figure></div>
+<figure style="margin:1.5rem 0">
+<svg role="img" viewBox="0 0 720 250" width="100%" style="max-width:720px;height:auto" aria-label="IR receive wiring. A three-pin 38 kilohertz IR receiver module: its VCC pin connects to the ESP32 3.3 volt pin, its GND pin to ground, and its OUT pin to an ESP32 GPIO input.">
+  <title>IR receive: a 3-pin 38 kHz IR receiver module wired to the ESP32</title>
+  <defs>
+    <marker id="ir-rx-amber" markerWidth="9" markerHeight="9" refX="5.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f0a53c"/></marker>
+  </defs>
+  <rect x="8" y="8" width="704" height="234" rx="14" fill="#171a1f" stroke="#3a4150"/>
+  <rect x="40" y="60" width="150" height="140" rx="10" fill="#2e5b39" stroke="#3f7a4d" stroke-width="2"/>
+  <rect x="70" y="95" width="88" height="70" rx="4" fill="#171a1f" stroke="#3f7a4d"/>
+  <text x="114" y="135" text-anchor="middle" font-size="13" fill="#c9cdd6" font-family="system-ui,sans-serif">ESP32</text>
+  <rect x="184" y="104" width="14" height="12" rx="2" fill="#3a4150" stroke="#8b91a0"/>
+  <rect x="184" y="134" width="14" height="12" rx="2" fill="#3a4150" stroke="#8b91a0"/>
+  <rect x="184" y="164" width="14" height="12" rx="2" fill="#3a4150" stroke="#8b91a0"/>
+  <text x="178" y="114" text-anchor="end" font-size="12" font-family="ui-monospace,monospace" fill="#c0574a">3V3</text>
+  <text x="178" y="144" text-anchor="end" font-size="12" font-family="ui-monospace,monospace" fill="#f0a53c">GPIO</text>
+  <text x="178" y="174" text-anchor="end" font-size="12" font-family="ui-monospace,monospace" fill="#c9cdd6">GND</text>
+  <path d="M198,110 H528" fill="none" stroke="#c0574a" stroke-width="2.5"/>
+  <path d="M528,140 H200" fill="none" stroke="#f0a53c" stroke-width="2.5" marker-end="url(#ir-rx-amber)"/>
+  <path d="M198,170 H528" fill="none" stroke="#c9cdd6" stroke-width="2.5"/>
+  <path d="M562,96 A24,24 0 0 1 608,96 Z" fill="#0d0f13" stroke="#3a4150"/>
+  <circle cx="585" cy="86" r="9" fill="#171a1f" stroke="#3a4150"/>
+  <rect x="530" y="96" width="120" height="94" rx="8" fill="#1f232b" stroke="#3a4150"/>
+  <rect x="522" y="104" width="12" height="12" rx="2" fill="#3a4150" stroke="#8b91a0"/>
+  <rect x="522" y="134" width="12" height="12" rx="2" fill="#3a4150" stroke="#8b91a0"/>
+  <rect x="522" y="164" width="12" height="12" rx="2" fill="#3a4150" stroke="#8b91a0"/>
+  <text x="540" y="114" font-size="11" font-family="ui-monospace,monospace" fill="#c0574a">VCC</text>
+  <text x="540" y="144" font-size="11" font-family="ui-monospace,monospace" fill="#f0a53c">OUT</text>
+  <text x="540" y="174" font-size="11" font-family="ui-monospace,monospace" fill="#c9cdd6">GND</text>
+  <text x="606" y="132" text-anchor="middle" font-size="12" font-family="system-ui,sans-serif" fill="#c9cdd6">IR receiver</text>
+  <text x="606" y="150" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif" fill="#8b91a0">38 kHz</text>
+  <text x="606" y="168" text-anchor="middle" font-size="10" font-family="system-ui,sans-serif" fill="#8b91a0">TSOP-style</text>
+  <circle cx="198" cy="110" r="3.5" fill="#c0574a"/>
+  <circle cx="198" cy="140" r="3.5" fill="#f0a53c"/>
+  <circle cx="198" cy="170" r="3.5" fill="#c9cdd6"/>
+  <text x="360" y="128" text-anchor="middle" font-size="10" font-family="system-ui,sans-serif" fill="#8b91a0">OUT → GPIO input</text>
+</svg>
+<figcaption style="color:#8b91a0;font-size:0.85rem;margin-top:0.5rem">Receive path: a 3-pin 38&nbsp;kHz module — <code>VCC</code> to 3V3, <code>GND</code> to ground, and <code>OUT</code> to a GPIO input the hub reads.</figcaption>
+</figure>
 <p>Use it to <strong>learn</strong> codes (via the <a href="/docs/drivers/#ir">IR driver</a>) or to use an old remote as an
 <a href="/docs/drivers/#inputproxy">input</a>.</p>
 <aside aria-label="Tip" class="starlight-aside starlight-aside--tip"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path fill-rule="evenodd" d="M1.44 8.855v-.001l3.527-3.516c.34-.344.802-.541 1.285-.548h6.649l.947-.947c3.07-3.07 6.207-3.072 7.62-2.868a1.821 1.821 0 0 1 1.557 1.557c.204 1.413.203 4.55-2.868 7.62l-.946.946v6.649a1.845 1.845 0 0 1-.549 1.286l-3.516 3.528a1.844 1.844 0 0 1-3.11-.944l-.858-4.275-4.52-4.52-2.31-.463-1.964-.394A1.847 1.847 0 0 1 .98 10.693a1.843 1.843 0 0 1 .46-1.838Zm5.379 2.017-3.873-.776L6.32 6.733h4.638l-4.14 4.14Zm8.403-5.655c2.459-2.46 4.856-2.463 5.89-2.33.134 1.035.13 3.432-2.329 5.891l-6.71 6.71-3.561-3.56 6.71-6.711Zm-1.318 15.837-.776-3.873 4.14-4.14v4.639l-3.364 3.374Z" clip-rule="evenodd"/><path d="M9.318 18.345a.972.972 0 0 0-1.86-.561c-.482 1.435-1.687 2.204-2.934 2.619a8.22 8.22 0 0 1-1.23.302c.062-.365.157-.79.303-1.229.415-1.247 1.184-2.452 2.62-2.935a.971.971 0 1 0-.62-1.842c-.12.04-.236.084-.35.13-2.02.828-3.012 2.588-3.493 4.033a10.383 10.383 0 0 0-.51 2.845l-.001.016v.063c0 .536.434.972.97.972H2.24a7.21 7.21 0 0 0 .878-.065c.527-.063 1.248-.19 2.02-.447 1.445-.48 3.205-1.472 4.033-3.494a5.828 5.828 0 0 0 .147-.407Z"/></svg>Tip</p><div class="starlight-aside__content"><p>Which pins carry <code dir="auto">ir.tx</code> / <code dir="auto">ir.rx</code> are validated by the hub when you configure the proxy — it won’t let you

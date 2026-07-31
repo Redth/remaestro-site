@@ -82,6 +82,57 @@
 trigger terminals.</li>
 <li><strong>RS-232:</strong> wire as in <a href="/docs/proxies/wiring-serial/">serial</a> and use the <a href="/docs/drivers/#screen">Screen driver</a>.</li>
 </ul>
+<p>For the dry-contact case, a <code dir="auto">gpio.out</code> pin drives a relay module (its own transistor and flyback diode keep the coil off the ESP32), and the relay’s isolated <code dir="auto">COM</code>/<code dir="auto">NO</code> contacts close the screen controller’s trigger terminals.</p>
+<figure style="margin:1.5rem 0">
+<svg role="img" viewBox="0 0 720 300" width="100%" style="max-width:720px;height:auto" aria-label="Dry-contact relay wiring. ESP32 5 volts connects to the relay module VCC, GPIO25 to the module IN signal, and ground to ground. The relay's COM and NO screw terminals connect to the projector screen controller's two trigger terminals, closing an isolated dry contact.">
+  <title>Dry-contact screen control: an ESP32 GPIO drives a relay module whose contacts close the screen trigger</title>
+  <defs>
+    <marker id="rel-amber" markerWidth="9" markerHeight="9" refX="5.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f0a53c"/></marker>
+  </defs>
+  <rect x="8" y="8" width="704" height="284" rx="14" fill="#171a1f" stroke="#3a4150"/>
+  <rect x="24" y="60" width="132" height="180" rx="10" fill="#2e5b39" stroke="#3f7a4d" stroke-width="2"/>
+  <rect x="48" y="120" width="84" height="60" rx="4" fill="#171a1f" stroke="#3f7a4d"/>
+  <text x="90" y="155" text-anchor="middle" font-size="12" fill="#c9cdd6" font-family="system-ui,sans-serif">ESP32</text>
+  <text x="144" y="104" text-anchor="end" font-size="11" font-family="ui-monospace,monospace" fill="#c0574a">5V</text>
+  <text x="144" y="154" text-anchor="end" font-size="11" font-family="ui-monospace,monospace" fill="#f0a53c">GPIO25</text>
+  <text x="144" y="204" text-anchor="end" font-size="11" font-family="ui-monospace,monospace" fill="#c9cdd6">GND</text>
+  <rect x="270" y="50" width="210" height="200" rx="8" fill="#1f232b" stroke="#3a4150"/>
+  <text x="375" y="42" text-anchor="middle" font-size="12" font-family="system-ui,sans-serif" fill="#c9cdd6">Relay module</text>
+  <text x="288" y="104" font-size="11" font-family="ui-monospace,monospace" fill="#c0574a">VCC</text>
+  <text x="288" y="154" font-size="11" font-family="ui-monospace,monospace" fill="#f0a53c">IN</text>
+  <text x="288" y="204" font-size="11" font-family="ui-monospace,monospace" fill="#c9cdd6">GND</text>
+  <rect x="326" y="115" width="96" height="70" rx="4" fill="#22303f" stroke="#3a4150"/>
+  <text x="374" y="146" text-anchor="middle" font-size="12" font-family="system-ui,sans-serif" fill="#c9cdd6">RELAY</text>
+  <text x="374" y="163" text-anchor="middle" font-size="9" font-family="system-ui,sans-serif" fill="#8b91a0">coil + diode</text>
+  <circle cx="340" cy="128" r="4" fill="#f0a53c"/>
+  <rect x="462" y="103" width="14" height="14" rx="2" fill="#3a4150" stroke="#8b91a0"/>
+  <rect x="462" y="153" width="14" height="14" rx="2" fill="#3a4150" stroke="#8b91a0"/>
+  <rect x="462" y="203" width="14" height="14" rx="2" fill="#3a4150" stroke="#8b91a0"/>
+  <text x="456" y="114" text-anchor="end" font-size="11" font-family="ui-monospace,monospace" fill="#f0a53c">COM</text>
+  <text x="456" y="164" text-anchor="end" font-size="11" font-family="ui-monospace,monospace" fill="#f0a53c">NO</text>
+  <text x="456" y="214" text-anchor="end" font-size="11" font-family="ui-monospace,monospace" fill="#8b91a0">NC</text>
+  <path d="M156,100 H264" fill="none" stroke="#c0574a" stroke-width="2.5"/>
+  <path d="M156,150 H264" fill="none" stroke="#f0a53c" stroke-width="2.5" marker-end="url(#rel-amber)"/>
+  <path d="M156,200 H264" fill="none" stroke="#c9cdd6" stroke-width="2.5"/>
+  <rect x="560" y="95" width="112" height="120" rx="6" fill="#1f232b" stroke="#3a4150"/>
+  <text x="616" y="86" text-anchor="middle" font-size="12" font-family="system-ui,sans-serif" fill="#c9cdd6">Screen trigger</text>
+  <rect x="576" y="130" width="16" height="16" rx="2" fill="#3a4150" stroke="#8b91a0"/>
+  <circle cx="584" cy="138" r="4" fill="#171a1f" stroke="#8b91a0"/>
+  <rect x="576" y="180" width="16" height="16" rx="2" fill="#3a4150" stroke="#8b91a0"/>
+  <circle cx="584" cy="188" r="4" fill="#171a1f" stroke="#8b91a0"/>
+  <text x="604" y="143" font-size="10" font-family="ui-monospace,monospace" fill="#8b91a0">T1</text>
+  <text x="604" y="193" font-size="10" font-family="ui-monospace,monospace" fill="#8b91a0">T2</text>
+  <text x="616" y="232" text-anchor="middle" font-size="10" font-family="system-ui,sans-serif" fill="#8b91a0">dry contact</text>
+  <path d="M476,110 H520 V138 H560" fill="none" stroke="#f0a53c" stroke-width="2.5"/>
+  <path d="M476,160 H520 V188 H560" fill="none" stroke="#f0a53c" stroke-width="2.5"/>
+  <circle cx="156" cy="100" r="3.5" fill="#c0574a"/>
+  <circle cx="156" cy="150" r="3.5" fill="#f0a53c"/>
+  <circle cx="156" cy="200" r="3.5" fill="#c9cdd6"/>
+  <circle cx="560" cy="138" r="3.5" fill="#f0a53c"/>
+  <circle cx="560" cy="188" r="3.5" fill="#f0a53c"/>
+</svg>
+<figcaption style="color:#8b91a0;font-size:0.85rem;margin-top:0.5rem">Dry-contact screen control: <code>GPIO25</code> switches the relay module (powered from 5&nbsp;V); the isolated <code>COM</code>/<code>NO</code> contacts close the screen controller's trigger terminals — no voltage from the ESP32 reaches the screen.</figcaption>
+</figure>
 <div class="sl-heading-wrapper level-h2"><h2 id="12-v-trigger-inout-gpio">12 V trigger in/out (gpio)</h2><a class="sl-anchor-link" href="#12-v-trigger-inout-gpio"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “12 V trigger in/out (gpio)”</span></a></div>
 <ul>
 <li><strong>Out:</strong> a GPIO through a transistor/relay can pulse a 12 V trigger to power an amp on with an activity.</li>
