@@ -324,10 +324,12 @@ p { text-wrap: pretty; }
 .brand-marquee.rev .marquee-track { animation-direction: reverse; animation-duration: 52s; }
 .brand-marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee-track span {
-  flex: 0 0 auto; padding: 0.75em 1.25em; border-radius: var(--r-sm);
+  flex: 0 0 auto; display: inline-flex; align-items: center; gap: 0.55em;
+  padding: 0.75em 1.25em 0.75em 1em; border-radius: var(--r-sm);
   background: linear-gradient(180deg, var(--surface), var(--bg-deep)); border: 1px solid var(--border);
   font-family: var(--font-display); font-weight: 600; font-size: clamp(1rem, 1.6vw, 1.25rem); color: var(--ink);
 }
+.marquee-track .ic { width: 1.05em; height: 1.05em; flex: 0 0 auto; color: var(--amber-text); }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .compat-foot { margin-top: 2rem; color: var(--ink-faint); font-size: 0.86rem; }
 .compat-ask { display: inline-flex; align-items: center; gap: 0.3em; margin-left: 0.35em; color: var(--amber-text);
@@ -386,6 +388,9 @@ p { text-wrap: pretty; }
 .foot-brand { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-display); }
 .foot > p.mono { color: var(--ink-muted); font-size: 0.85rem; }
 .foot-fine { color: var(--ink-faint); font-size: 0.76rem; }
+.foot-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem 1.4rem; margin: 0.4rem 0 0.6rem; font-size: 0.86rem; }
+.foot-links a { color: var(--ink-muted); transition: color .16s; }
+.foot-links a:hover { color: var(--amber-text); }
 
 /* ---------- Reveal motion ----------
    Visible by default. Only when JS is live (html.js) do reveals start hidden and animate in — so no-JS,
