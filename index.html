@@ -50,6 +50,9 @@
   <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v4M15 3v4M6.5 7h11v3a5.5 5.5 0 0 1-11 0zM12 15.5V21"/></symbol>
   <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.6-3 8.2-7 10-4-1.8-7-5.4-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
   <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></symbol>
+  <symbol id="i-usb" viewBox="0 0 24 24"><path d="M12 21V3"/><path d="m9.4 6 2.6-3 2.6 3"/><path d="M12 14 8 11.5V9"/><path d="M12 11.5 16 9V6.5"/><circle cx="8" cy="8" r="1.35" fill="currentColor" stroke="none"/><rect x="14.5" y="4.9" width="3" height="3" rx=".5" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M12 2.6l8 4.5v9.8L12 21.4 4 16.9V7.1z"/><path d="M12 2.6v18.8M12 12l8-4.5M12 12 4 7.5"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.6" cy="6" r="1.1" fill="currentColor" stroke="none"/><circle cx="4.6" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="4.6" cy="18" r="1.1" fill="currentColor" stroke="none"/></symbol>
 </defs></svg>
 
 <header class="nav" id="top">
@@ -76,13 +79,40 @@
       <p class="hero-kicker mono">Self-hosted AV &amp; smart-home control</p>
       <h1 id="hero-h" class="display">Conduct your whole<br /><span class="amber">home theatre.</span></h1>
       <p class="lede">One brain for every screen, speaker and source in the house, over IR, serial,
-        Bluetooth and the network. It runs on <em>your</em> Raspberry Pi. No cloud. No lock-in.</p>
+        Bluetooth and the network. It runs on <em>hardware you own</em>. No cloud. No lock-in.</p>
       <p class="hero-harmony">Everything in <span class="amber">harmony</span> again.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#control"><svg class="ic"><use href="#i-play"/></svg>See it in action</a>
         <a class="btn btn-ghost" href="#start">Get started <svg class="ic"><use href="#i-arrow"/></svg></a>
       </div>
-      <div class="hero-caps" aria-label="At a glance">
+    </div>
+
+    <div class="hero-right">
+      <!-- hero product shot: the console, recreated -->
+      <div class="hero-shot reveal" aria-hidden="true">
+        <div class="frame frame-browser">
+          <div class="frame-bar"><i></i><i></i><i></i><span class="mono">remaestro.local</span></div>
+          <div class="console">
+            <div class="console-now">
+              <span class="pill on">On now</span>
+              <div class="eq" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
+              <div class="console-now-txt"><b>Movie Night</b><small>Projector · Denon · Apple TV · Lights 20%</small></div>
+            </div>
+            <div class="console-grid">
+              <div class="tile tile-lg"><span class="tile-ico">▶</span><b>Watch a Movie</b><small>1 tap · 4 devices</small></div>
+              <div class="tile"><span class="tile-ico">📺</span><b>Living Room TV</b><small>HDMI 2</small></div>
+              <div class="tile"><span class="tile-ico">🔊</span><b>Denon AVR</b><small>−24 dB</small></div>
+              <div class="tile"><span class="tile-ico">💡</span><b>Sconces</b><small>20%</small></div>
+              <div class="tile"><span class="tile-ico">🎬</span><b>Projector</b><small>Warming…</small></div>
+              <div class="tile"><span class="tile-ico">🎞</span><b>Libraries</b><small>Play anywhere</small></div>
+            </div>
+          </div>
+        </div>
+        <div class="shot-glow" aria-hidden="true"></div>
+      </div>
+
+      <!-- capability rail, under the shot -->
+      <div class="hero-caps reveal" aria-label="At a glance">
         <div class="cap">
           <div class="cap-lead"><span class="cap-num mono">43+</span> device families</div>
           <div class="ic-row" aria-hidden="true">
@@ -92,15 +122,6 @@
             <svg class="ic"><use href="#i-streamer"/></svg>
             <svg class="ic"><use href="#i-bulb"/></svg>
             <svg class="ic"><use href="#i-pad"/></svg>
-          </div>
-        </div>
-        <div class="cap">
-          <div class="cap-lead">Four ways in</div>
-          <div class="tp-row" aria-hidden="true">
-            <span><svg class="ic"><use href="#i-ir"/></svg>IR</span>
-            <span><svg class="ic"><use href="#i-serial"/></svg>Serial</span>
-            <span><svg class="ic"><use href="#i-bt"/></svg>Bluetooth</span>
-            <span><svg class="ic"><use href="#i-net"/></svg>Network</span>
           </div>
         </div>
         <div class="cap cap-pi">
@@ -113,32 +134,18 @@
             <circle cx="47" cy="30" r="2.2" fill="#f0a53c"/>
             <circle cx="7" cy="7" r="1.4" fill="#3f7a4d"/><circle cx="50" cy="22" r="1.4" fill="#3f7a4d"/>
           </svg>
-          <span>on your own Pi</span>
+          <span>runs on your hardware</span>
         </div>
-      </div>
-    </div>
-
-    <!-- hero product shot: the console, recreated -->
-    <div class="hero-shot reveal" aria-hidden="true">
-      <div class="frame frame-browser">
-        <div class="frame-bar"><i></i><i></i><i></i><span class="mono">remaestro.local</span></div>
-        <div class="console">
-          <div class="console-now">
-            <span class="pill on">On now</span>
-            <div class="eq" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
-            <div class="console-now-txt"><b>Movie Night</b><small>Projector · Denon · Apple TV · Lights 20%</small></div>
-          </div>
-          <div class="console-grid">
-            <div class="tile tile-lg"><span class="tile-ico">▶</span><b>Watch a Movie</b><small>1 tap · 4 devices</small></div>
-            <div class="tile"><span class="tile-ico">📺</span><b>Living Room TV</b><small>HDMI 2</small></div>
-            <div class="tile"><span class="tile-ico">🔊</span><b>Denon AVR</b><small>−24 dB</small></div>
-            <div class="tile"><span class="tile-ico">💡</span><b>Sconces</b><small>20%</small></div>
-            <div class="tile"><span class="tile-ico">🎬</span><b>Projector</b><small>Warming…</small></div>
-            <div class="tile"><span class="tile-ico">📡</span><b>TV Guide</b><small>What's on</small></div>
+        <div class="cap cap-tp">
+          <div class="cap-lead">Control any protocol</div>
+          <div class="tp-row" aria-hidden="true">
+            <span><svg class="ic"><use href="#i-ir"/></svg>IR</span>
+            <span><svg class="ic"><use href="#i-serial"/></svg>Serial</span>
+            <span><svg class="ic"><use href="#i-bt"/></svg>Bluetooth</span>
+            <span><svg class="ic"><use href="#i-net"/></svg>Network</span>
           </div>
         </div>
       </div>
-      <div class="shot-glow" aria-hidden="true"></div>
     </div>
   </section>
 
@@ -177,14 +184,14 @@
             the right input and opens the app, in the right order, every time. You press one thing.</p>
         </div>
         <div class="feat-shot">
-          <div class="activity-flow" aria-hidden="true">
-            <span class="step"><i>💡</i>Lights 20%</span>
-            <span class="arrow">→</span>
-            <span class="step"><i>🎬</i>Projector on</span>
-            <span class="arrow">→</span>
-            <span class="step"><i>🔊</i>AVR · HDMI 2</span>
-            <span class="arrow">→</span>
-            <span class="step done"><i>▶</i>Apple TV</span>
+          <div class="activity-run" aria-hidden="true">
+            <div class="ar-head"><span class="pill on">Running</span><b>Watch a Movie</b></div>
+            <ol class="ar-steps">
+              <li class="ar-step" style="--i:0"><span class="ar-dot"></span><i>💡</i><span>Dim the sconces to 20%</span></li>
+              <li class="ar-step" style="--i:1"><span class="ar-dot"></span><i>🎬</i><span>Wake the projector</span></li>
+              <li class="ar-step" style="--i:2"><span class="ar-dot"></span><i>🔊</i><span>Receiver to HDMI&nbsp;2</span></li>
+              <li class="ar-step" style="--i:3"><span class="ar-dot"></span><i>▶</i><span>Open Apple&nbsp;TV</span></li>
+            </ol>
           </div>
         </div>
       </article>
@@ -226,9 +233,9 @@
           <p>Zones keep the theatre, the den and the kitchen each doing their own thing, all from one hub.</p>
         </div>
         <div class="mini">
-          <span class="mini-ico" aria-hidden="true"><svg class="ic"><use href="#i-tv"/></svg></span>
-          <h4>Live TV guide</h4>
-          <p>Fold a tuner, an XMLTV feed or an Xtream account into one channels-by-time grid. New, and growing.</p>
+          <span class="mini-ico" aria-hidden="true"><svg class="ic"><use href="#i-book"/></svg></span>
+          <h4>Browse your libraries</h4>
+          <p>Flip through Plex, Jellyfin, Kodi and the NAS, then play any title straight on the screen you pick.</p>
         </div>
       </div>
     </div>
@@ -243,10 +250,10 @@
     </div>
 
     <div class="transports reveal">
-      <span class="tp"><b class="mono">IR</b> infrared blasters</span>
-      <span class="tp"><b class="mono">RS-232</b> serial</span>
-      <span class="tp"><b class="mono">BT</b> Bluetooth &amp; HID</span>
-      <span class="tp"><b class="mono">NET</b> the network</span>
+      <span class="tp"><svg class="ic" aria-hidden="true"><use href="#i-ir"/></svg><b class="mono">IR</b> infrared blasters</span>
+      <span class="tp"><svg class="ic" aria-hidden="true"><use href="#i-serial"/></svg><b class="mono">RS-232</b> serial</span>
+      <span class="tp"><svg class="ic" aria-hidden="true"><use href="#i-bt"/></svg><b class="mono">BT</b> Bluetooth &amp; HID</span>
+      <span class="tp"><svg class="ic" aria-hidden="true"><use href="#i-net"/></svg><b class="mono">NET</b> the network</span>
     </div>
 
     <div class="brandwall" aria-label="Supported device families">
@@ -264,7 +271,8 @@
       </div>
     </div>
 
-    <p class="compat-foot reveal mono">…and if yours isn't here yet, the driver model is open. Write it once, it works everywhere.</p>
+    <p class="compat-foot reveal mono">…and if yours isn't here yet, the driver model is open. Write it once, it works everywhere.
+      <a class="compat-ask" href="https://github.com/Redth/remaestro-site/issues/new?labels=device-request&amp;title=Device%20request%3A%20" target="_blank" rel="noopener">Ask us and we'll add it <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
   </section>
 
   <!-- ============ AI (optional) ============ -->
@@ -308,8 +316,9 @@
   <section class="harmony" aria-labelledby="harmony-h">
     <div class="harmony-inner reveal">
       <h2 id="harmony-h" class="display">All in <span class="amber">harmony</span> again.</h2>
-      <p class="harmony-lede">Remember the one universal remote that finally ran the whole living room? It got
-        discontinued. The servers went dark, and a drawer full of hardware went dark with them.</p>
+      <p class="harmony-lede">Remember the one universal remote that finally ran the whole living room? It was
+        discontinued years ago, and it still leans on servers someone else owns. The day those go dark, a
+        drawer full of hardware goes dark with them.</p>
       <p class="harmony-lede"><b>reMaestro brings the one-remote dream back</b>, and this time it lives on your
         hardware. Nobody can switch it off but you.</p>
     </div>
@@ -320,10 +329,11 @@
     <div class="self-grid">
       <div class="section-head reveal">
         <h2 id="self-h" class="display">It runs on <span class="amber">your</span> hardware</h2>
-        <p class="section-sub">Flash a Raspberry Pi, plug it into the rack, and it's yours. Your devices, your
-          data, your network. Nothing phones home, nothing needs a subscription, nothing disappears when a
-          company sunsets an app.</p>
+        <p class="section-sub">Flash a Raspberry Pi for a plug-and-play appliance, or run it in Docker on the NAS
+          or mini-PC you already own. Your devices, your data, your network. Nothing phones home, nothing needs a
+          subscription, nothing disappears when a company sunsets an app.</p>
         <ul class="self-list">
+          <li><b>Pi or Docker.</b> A ready-to-flash appliance image, or a container on any amd64 / arm64 Linux box.</li>
           <li><b>No cloud.</b> Everything stays on your LAN. It works when your internet doesn't.</li>
           <li><b>An appliance, not a project.</b> Self-updating, self-healing, over-the-air releases.</li>
           <li><b>Yours to bend.</b> Open drivers, custom remotes, rules and activities, no ceiling.</li>
@@ -340,6 +350,11 @@
           <div class="pi-cable"></div>
         </div>
         <div class="pi-caption mono">reMaestro OS · one card · plug &amp; play</div>
+        <div class="self-plats" role="list">
+          <span role="listitem"><svg class="ic" aria-hidden="true"><use href="#i-cpu"/></svg>Raspberry&nbsp;Pi</span>
+          <span role="listitem"><svg class="ic" aria-hidden="true"><use href="#i-apps"/></svg>Docker</span>
+          <span role="listitem"><svg class="ic" aria-hidden="true"><use href="#i-plug"/></svg>amd64 · arm64</span>
+        </div>
       </div>
     </div>
   </section>
@@ -369,6 +384,60 @@
           <li><b>Relays anything.</b> IR blasts, RS-232 serial and Bluetooth HID, out in another room.</li>
           <li><b>As many as you like.</b> One per room, all conducted by the single hub.</li>
         </ul>
+      </div>
+    </div>
+
+    <div class="prox-kit reveal">
+      <span class="prox-kit-ico" aria-hidden="true"><svg class="ic"><use href="#i-box"/></svg></span>
+      <div class="prox-kit-body">
+        <h4>Build one, or buy one</h4>
+        <p>We're putting together 3D-printable enclosures, clean parts lists, and step-by-step build guides, so
+          you can put a proxy together for the price of the parts. And if enough people would rather have one
+          ready to plug in, we may offer pre-built units too.</p>
+        <div class="prox-kit-tags">
+          <span><svg class="ic" aria-hidden="true"><use href="#i-box"/></svg>3D-printable enclosures</span>
+          <span><svg class="ic" aria-hidden="true"><use href="#i-list"/></svg>Parts lists</span>
+          <span><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg>Build guides</span>
+          <span class="soon"><svg class="ic" aria-hidden="true"><use href="#i-cpu"/></svg>Pre-built · maybe</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BRING YOUR OWN REMOTES ============ -->
+  <section class="section byo" id="remotes" aria-labelledby="byo-h">
+    <div class="split">
+      <div class="section-head reveal">
+        <span class="badge"><svg class="ic"><use href="#i-arrow"/></svg> It listens, too</span>
+        <h2 id="byo-h" class="display">Drive it with <span class="amber">any</span> remote</h2>
+        <p class="section-sub">reMaestro doesn't just push buttons, it listens for them. Pair a 2.4GHz USB clicker,
+          a Bluetooth remote, or an old IR wand, and every key becomes an input you can map.</p>
+        <ul class="ticks">
+          <li><b>USB, Bluetooth or IR.</b> Whatever you already own becomes a control surface.</li>
+          <li><b>Map a key to anything.</b> Fire an activity, jump to an app, or nudge the volume. Your layout.</li>
+          <li><b>A remote of our own is coming.</b> Built for this from the ground up. <span class="wink">You'll want it.</span></li>
+        </ul>
+        <p class="optional-note">
+          <svg class="ic"><use href="#i-shield"/></svg>
+          <span><b>An open ecosystem.</b> The mappings and the protocol are yours. If you ever move on, take the
+            remote, and its layout, to whatever you use next. Nothing here is locked to us.</span>
+        </p>
+      </div>
+      <div class="byo-shot reveal" aria-hidden="true">
+        <div class="byo-diagram">
+          <div class="byo-remotes">
+            <svg viewBox="0 0 40 100" class="byo-rem"><rect x="9" y="2" width="22" height="96" rx="11" fill="#232830" stroke="#4a5260"/><rect x="13" y="8" width="14" height="26" rx="7" fill="#2f3540" stroke="#5a6373"/><circle cx="20" cy="46" r="3" fill="#3a414d"/><rect x="14" y="56" width="12" height="4" rx="2" fill="#3a414d"/><circle cx="20" cy="72" r="3" fill="#3a414d"/><rect x="14" y="84" width="12" height="4" rx="2" fill="#3a414d"/></svg>
+            <svg viewBox="0 0 40 100" class="byo-rem"><rect x="8" y="2" width="24" height="96" rx="10" fill="#3a2a52" stroke="#6b4fa0"/><circle cx="20" cy="13" r="3" fill="#7a4fd0"/><circle cx="20" cy="40" r="12" fill="none" stroke="#6b4fa0" stroke-width="2"/><circle cx="20" cy="40" r="4.5" fill="#7a4fd0"/><rect x="13" y="58" width="5" height="4" rx="2" fill="#5a4088"/><rect x="22" y="58" width="5" height="4" rx="2" fill="#5a4088"/><g fill="#5a4088"><rect x="11" y="82" width="7" height="5" rx="1.5"/><rect x="22" y="82" width="7" height="5" rx="1.5"/><rect x="11" y="90" width="7" height="5" rx="1.5"/><rect x="22" y="90" width="7" height="5" rx="1.5"/></g></svg>
+            <svg viewBox="0 0 40 100" class="byo-rem"><rect x="9" y="2" width="22" height="96" rx="10" fill="#232830" stroke="#4a5260"/><circle cx="20" cy="12" r="2.5" fill="#3a414d"/><circle cx="20" cy="38" r="11" fill="none" stroke="#4a5260" stroke-width="2"/><circle cx="20" cy="38" r="4" fill="#3a414d"/><g fill="#3a414d"><circle cx="12" cy="62" r="2.5"/><circle cx="20" cy="62" r="2.5"/><circle cx="28" cy="62" r="2.5"/></g><g fill="#3a414d"><rect x="13" y="78" width="6" height="5" rx="2"/><rect x="21" y="78" width="6" height="5" rx="2"/></g></svg>
+          </div>
+          <div class="byo-tp">
+            <span><svg class="ic"><use href="#i-usb"/></svg>USB · 2.4GHz</span>
+            <span><svg class="ic"><use href="#i-bt"/></svg>Bluetooth</span>
+            <span><svg class="ic"><use href="#i-ir"/></svg>IR</span>
+          </div>
+          <div class="prox-wire"></div>
+          <div class="node esp"><svg class="ic"><use href="#i-sliders"/></svg><b>reMaestro</b><small>maps every press</small></div>
+        </div>
       </div>
     </div>
   </section>
