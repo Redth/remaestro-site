@@ -79,37 +79,42 @@
 <p>An IR LED driven through a transistor from a GPIO. Don’t drive the LED straight off a pin — IR LEDs want more
 current than a GPIO should source.</p>
 <figure class="wiring">
-<svg role="img" viewBox="0 0 700 320" width="100%" style="max-width:700px;height:auto" aria-label="IR transmit: a GPIO switching an infrared LED through a transistor. ESP32 3V3 connects to 2N2222 C through a 100 Ω and then an IR LED → device — power. ESP32 TX connects to 2N2222 B through a 1 kΩ — signal (GPIO). ESP32 GND connects to 2N2222 E — ground.">
+<svg role="img" viewBox="0 0 700 340" width="100%" style="max-width:700px;height:auto" aria-label="IR transmit: a GPIO switching an infrared LED through a transistor. ESP32 3V3 connects to 2N2222 C through a 100 Ω and then an IR LED → device — power. ESP32 TX connects to 2N2222 B through a 1 kΩ — signal (GPIO). ESP32 GND connects to 2N2222 E — ground.">
 	<title>IR transmit: a GPIO switching an infrared LED through a transistor</title>
 	<defs>
 		<marker id="wire-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
 			<path d="M 0 0 L 10 5 L 0 10 z" fill="var(--wire-signal, #f0a53c)"></path>
 		</marker>
 	</defs>
-	<rect x="0" y="0" width="700" height="320" rx="12" fill="var(--wire-surface, #171a1f)"></rect>
+	<rect x="0" y="0" width="700" height="340" rx="12" fill="var(--wire-surface, #171a1f)"></rect>
 
-	<path d="M 190 95 H 512 V 150" fill="none" stroke="var(--wire-power, #c0574a)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-	<rect x="279.3" y="92" width="36" height="6" fill="var(--wire-surface, #171a1f)"></rect>
-	<rect x="387.7" y="92" width="34" height="6" fill="var(--wire-surface, #171a1f)"></rect>
-	<g transform="translate(297.3 95)"><path d="M-22 0 h7 M15 0 h7" stroke="var(--wire-power, #c0574a)" stroke-width="2"></path>
+	<path d="M 190 125 H 512 V 180" fill="none" stroke="var(--wire-power, #c0574a)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+	<rect x="279.3" y="122" width="36" height="6" fill="var(--wire-surface, #171a1f)"></rect>
+	<rect x="388.7" y="122" width="32" height="6" fill="var(--wire-surface, #171a1f)"></rect>
+	<g transform="translate(297.3 125)"><path d="M-22 0 h7 M15 0 h7" stroke="var(--wire-power, #c0574a)" stroke-width="2"></path>
 	<rect x="-15" y="-8" width="30" height="16" rx="7" fill="#d9b382" stroke="#a8875f"></rect><rect x="-11" y="-8" width="3.4" height="16" fill="#6b3f1d"></rect><rect x="-4.5" y="-8" width="3.4" height="16" fill="#1a1a1a"></rect><rect x="2" y="-8" width="3.4" height="16" fill="#6b3f1d"></rect><rect x="8.5" y="-8" width="3.4" height="16" fill="#c9a227"></rect>
 	<text x="0" y="-14" text-anchor="middle" font-size="10" font-family="ui-monospace, monospace" fill="var(--wire-ink, #c9cdd6)">100 Ω</text></g>
-	<g transform="translate(404.7 95)"><path d="M-20 0 h6 M14 0 h6" stroke="var(--wire-power, #c0574a)" stroke-width="2"></path>
-	<path d="M-14 8 V-2 a11 11 0 0 1 22 0 V8 Z" fill="#2f3f6b" stroke="#5a6b9c"></path>
-	<path d="M-14 8 h22" stroke="#5a6b9c" stroke-width="1.5"></path>
-	<ellipse cx="-3" cy="-2" rx="3" ry="5" fill="#fff" opacity="0.22"></ellipse>
+	<g transform="translate(404.7 125)"><path d="M-16 0 H-8 M8 0 H16" stroke="var(--wire-power, #c0574a)" stroke-width="2"></path>
+	<path d="M8 0 V-10" stroke="var(--wire-power, #c0574a)" stroke-width="2"></path>
+	<path d="M-8 2 V-24" stroke="#b9bec9" stroke-width="2.5" stroke-linecap="round"></path>
+	<path d="M8 -10 V-24" stroke="#b9bec9" stroke-width="2.5" stroke-linecap="round"></path>
+	<path d="M-12 -24 V-34 a12 12 0 0 1 24 0 V-24 Z" fill="#2f3f6b" stroke="#5a6b9c"></path>
+	<path d="M10 -24 V-32" stroke="#5a6b9c" stroke-width="3"></path>
+	<ellipse cx="-3" cy="-33" rx="3" ry="4.5" fill="#fff" opacity="0.24"></ellipse>
 	<g stroke="var(--wire-signal, #f0a53c)" stroke-width="1.5" stroke-linecap="round" fill="none">
-		<path d="M12 -10 l7 -6"></path><path d="M17 -5 l7 -6"></path>
+		<path d="M16 -40 l8 -6"></path><path d="M20 -34 l8 -6"></path>
 	</g>
-	<text x="0" y="22" text-anchor="middle" font-size="10" font-family="system-ui, sans-serif" fill="var(--wire-ink, #c9cdd6)">IR LED → device</text></g>
-	<path d="M 190 222 H 512 V 220" fill="none" stroke="var(--wire-ground, #c9cdd6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-	<path d="M 190 140 H 330 V 185 H 470" fill="none" stroke="var(--wire-signal, #f0a53c)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#wire-arrow)"></path>
-	<rect x="242.0" y="137" width="36" height="6" fill="var(--wire-surface, #171a1f)"></rect>
-	<g transform="translate(260.0 140)"><path d="M-22 0 h7 M15 0 h7" stroke="var(--wire-signal, #f0a53c)" stroke-width="2"></path>
+	<text x="-8" y="14" text-anchor="middle" font-size="9" font-family="ui-monospace, monospace" fill="var(--wire-faint, #8b91a0)">+</text>
+	<text x="8" y="14" text-anchor="middle" font-size="9" font-family="ui-monospace, monospace" fill="var(--wire-faint, #8b91a0)">−</text>
+	<text x="0" y="27" text-anchor="middle" font-size="10" font-family="system-ui, sans-serif" fill="var(--wire-ink, #c9cdd6)">IR LED → device</text></g>
+	<path d="M 190 252 H 512 V 250" fill="none" stroke="var(--wire-ground, #c9cdd6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+	<path d="M 190 170 H 330 V 215 H 470" fill="none" stroke="var(--wire-signal, #f0a53c)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#wire-arrow)"></path>
+	<rect x="242.0" y="167" width="36" height="6" fill="var(--wire-surface, #171a1f)"></rect>
+	<g transform="translate(260.0 170)"><path d="M-22 0 h7 M15 0 h7" stroke="var(--wire-signal, #f0a53c)" stroke-width="2"></path>
 	<rect x="-15" y="-8" width="30" height="16" rx="7" fill="#d9b382" stroke="#a8875f"></rect><rect x="-11" y="-8" width="3.4" height="16" fill="#6b3f1d"></rect><rect x="-4.5" y="-8" width="3.4" height="16" fill="#1a1a1a"></rect><rect x="2" y="-8" width="3.4" height="16" fill="#c0392b"></rect><rect x="8.5" y="-8" width="3.4" height="16" fill="#c9a227"></rect>
 	<text x="0" y="-14" text-anchor="middle" font-size="10" font-family="ui-monospace, monospace" fill="var(--wire-ink, #c9cdd6)">1 kΩ</text></g>
-	<text x="194.0" y="127.0" font-size="10" font-family="system-ui,sans-serif" fill="var(--wire-faint, #8b91a0)">GPIO</text>
-	<g transform="translate(40 50)">
+	<text x="194.0" y="157.0" font-size="10" font-family="system-ui,sans-serif" fill="var(--wire-faint, #8b91a0)">GPIO</text>
+	<g transform="translate(40 80)">
 	<rect x="0" y="0" width="150" height="210" rx="8" fill="var(--wire-board, #2e5b39)" stroke="var(--wire-board-edge, #3f7a4d)"></rect>
 	<rect x="26" y="76" width="74" height="58" rx="4" fill="#171a1f" stroke="var(--wire-hairline, #3a4150)"></rect>
 	<text x="63" y="110" text-anchor="middle" font-size="12" font-family="system-ui, sans-serif" fill="var(--wire-ink, #c9cdd6)">ESP32</text>
@@ -119,7 +124,7 @@ current than a GPIO should source.</p>
 	<rect x="146" y="126" width="8" height="8" rx="1.5" fill="var(--wire-surface-2, #1f232b)" stroke="var(--wire-hairline, #3a4150)"></rect><text x="140" y="134" text-anchor="end" font-size="11" font-family="ui-monospace, monospace" fill="var(--wire-signal, #f0a53c)">RX</text>
 	<rect x="146" y="168" width="8" height="8" rx="1.5" fill="var(--wire-surface-2, #1f232b)" stroke="var(--wire-hairline, #3a4150)"></rect><text x="140" y="176" text-anchor="end" font-size="11" font-family="ui-monospace, monospace" fill="var(--wire-ink, #c9cdd6)">GND</text>
 	</g>
-	<g transform="translate(470 150)">
+	<g transform="translate(470 180)">
 	<path d="M16 14 h20 a20 21 0 0 1 0 42 h-20 Z" fill="#20242b" stroke="#3f4653"></path>
 	<path d="M16 14 V56" stroke="#4a5260" stroke-width="2"></path>
 	<path d="M0 35 H16" stroke="#b9bec9" stroke-width="2.5" stroke-linecap="round"></path>
