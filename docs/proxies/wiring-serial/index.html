@@ -76,57 +76,62 @@
 	StarlightThemeProvider.updatePickers();
 </script></div></div></div></div></nav><div class="main-frame astro-gqpr5s5a"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-abfeecmu"><aside class="right-sidebar-container print:hidden astro-abfeecmu"><div class="right-sidebar astro-abfeecmu"><div class="lg:sl-hidden astro-q5mffni3"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-5ulgm6bh"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-5ulgm6bh"><details id="starlight__mobile-toc" class="astro-5ulgm6bh"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-5ulgm6bh"><span class="toggle sl-flex astro-5ulgm6bh">On this page<svg aria-hidden="true" class="caret astro-5ulgm6bh astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-5ulgm6bh"></span></summary><div class="dropdown astro-5ulgm6bh"><ul class="isMobile astro-cxyftcne" style="--depth: 0;"><li style="--depth: 0;" class="astro-cxyftcne"><a href="#_top" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Overview</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/docs/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.BcSo_yiZ.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-q5mffni3"><div class="sl-container astro-q5mffni3"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-cxyftcne" style="--depth: 0;"><li style="--depth: 0;" class="astro-cxyftcne"><a href="#_top" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Overview</span></a></li></ul></nav></starlight-toc><script type="module" src="/docs/_astro/TableOfContents.astro_astro_type_script_index_0_lang.Csloo1VZ.js"></script></div></div></div></aside><div class="main-pane astro-abfeecmu"><main data-pagefind-body class="astro-vdxcvpsm" lang="en" dir="ltr"><div class="content-panel astro-oil7k7jf"><div class="sl-container astro-oil7k7jf"><h1 id="_top" class="astro-2sm4b3ln">Wiring: RS-232 serial</h1></div></div><div class="content-panel astro-oil7k7jf"><div class="sl-container astro-oil7k7jf"><div class="sl-markdown-content"><p>Serial gear (projectors, older receivers, screen controllers) speaks <strong>RS-232</strong>, which is <strong>±12 V</strong> — you must
 <strong>not</strong> wire it straight to an ESP32’s 3.3 V UART. Put a <strong>level shifter</strong> (a MAX3232 board) between them.</p>
-<figure style="margin:1.5rem 0">
-<svg role="img" viewBox="0 0 720 360" width="100%" style="max-width:720px;height:auto" aria-label="RS-232 serial wiring through a MAX3232 level shifter. On the 3.3 volt TTL side the ESP32 TX connects to MAX3232 T1IN, ESP32 RX to R1OUT, ground to ground, and 3.3 volts to VCC. On the RS-232 side the crossover is critical: MAX3232 T1OUT carries the ESP32 transmit line to the device's receive pin, DB9 pin 2 RXD; the device's transmit line on DB9 pin 3 TXD returns to MAX3232 R1IN; DB9 pin 5 is ground.">
-  <title>RS-232 serial: ESP32 to a MAX3232 level shifter to a DB9 connector, showing the TX/RX crossover</title>
-  <defs>
-    <marker id="ser-amber" markerWidth="9" markerHeight="9" refX="5.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f0a53c"/></marker>
-  </defs>
-  <rect x="8" y="8" width="704" height="344" rx="14" fill="#171a1f" stroke="#3a4150"/>
-  <rect x="24" y="70" width="132" height="230" rx="10" fill="#2e5b39" stroke="#3f7a4d" stroke-width="2"/>
-  <rect x="48" y="150" width="84" height="70" rx="4" fill="#171a1f" stroke="#3f7a4d"/>
-  <text x="90" y="192" text-anchor="middle" font-size="12" fill="#c9cdd6" font-family="system-ui,sans-serif">ESP32</text>
-  <text x="144" y="114" text-anchor="end" font-size="11" font-family="ui-monospace,monospace" fill="#f0a53c">TX</text>
-  <text x="144" y="164" text-anchor="end" font-size="11" font-family="ui-monospace,monospace" fill="#f0a53c">RX</text>
-  <text x="144" y="214" text-anchor="end" font-size="11" font-family="ui-monospace,monospace" fill="#c9cdd6">GND</text>
-  <text x="144" y="264" text-anchor="end" font-size="11" font-family="ui-monospace,monospace" fill="#c0574a">3V3</text>
-  <rect x="280" y="70" width="170" height="220" rx="8" fill="#1f232b" stroke="#3a4150"/>
-  <text x="365" y="62" text-anchor="middle" font-size="12" font-family="system-ui,sans-serif" fill="#c9cdd6">MAX3232 level shifter</text>
-  <rect x="330" y="150" width="70" height="60" rx="4" fill="#171a1f" stroke="#3a4150"/>
-  <text x="365" y="185" text-anchor="middle" font-size="12" font-family="ui-monospace,monospace" fill="#8b91a0">3232</text>
-  <text x="286" y="114" font-size="11" font-family="ui-monospace,monospace" fill="#f0a53c">T1IN</text>
-  <text x="286" y="164" font-size="11" font-family="ui-monospace,monospace" fill="#f0a53c">R1OUT</text>
-  <text x="286" y="214" font-size="11" font-family="ui-monospace,monospace" fill="#c9cdd6">GND</text>
-  <text x="286" y="264" font-size="11" font-family="ui-monospace,monospace" fill="#c0574a">VCC</text>
-  <text x="444" y="114" text-anchor="end" font-size="11" font-family="ui-monospace,monospace" fill="#f0a53c">T1OUT</text>
-  <text x="444" y="164" text-anchor="end" font-size="11" font-family="ui-monospace,monospace" fill="#f0a53c">R1IN</text>
-  <text x="444" y="214" text-anchor="end" font-size="11" font-family="ui-monospace,monospace" fill="#c9cdd6">GND</text>
-  <path d="M156,110 H278" fill="none" stroke="#f0a53c" stroke-width="2.5" marker-end="url(#ser-amber)"/>
-  <path d="M278,160 H158" fill="none" stroke="#f0a53c" stroke-width="2.5" marker-end="url(#ser-amber)"/>
-  <path d="M156,210 H278" fill="none" stroke="#c9cdd6" stroke-width="2.5"/>
-  <path d="M156,260 H278" fill="none" stroke="#c0574a" stroke-width="2.5"/>
-  <rect x="452" y="116" width="106" height="102" rx="10" fill="#f0a53c" fill-opacity="0.05" stroke="#f0a53c" stroke-opacity="0.22"/>
-  <text x="505" y="108" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif" fill="#f0a53c">TX ↔ RX crossover</text>
-  <path d="M450,110 L560,175" fill="none" stroke="#f0a53c" stroke-width="2.5" marker-end="url(#ser-amber)"/>
-  <path d="M560,130 L452,160" fill="none" stroke="#f0a53c" stroke-width="2.5" marker-end="url(#ser-amber)"/>
-  <path d="M450,210 H510 V220 H560" fill="none" stroke="#c9cdd6" stroke-width="2.5"/>
-  <polygon points="560,100 630,120 630,240 560,260" fill="#1f232b" stroke="#3a4150" stroke-width="2"/>
-  <text x="596" y="90" text-anchor="middle" font-size="12" font-family="system-ui,sans-serif" fill="#c9cdd6">DB9</text>
-  <circle cx="560" cy="130" r="6" fill="#171a1f" stroke="#8b91a0"/>
-  <circle cx="560" cy="175" r="6" fill="#171a1f" stroke="#8b91a0"/>
-  <circle cx="560" cy="220" r="6" fill="#171a1f" stroke="#8b91a0"/>
-  <text x="576" y="128" font-size="10" font-family="ui-monospace,monospace" fill="#8b91a0">3 TXD</text>
-  <text x="576" y="173" font-size="10" font-family="ui-monospace,monospace" fill="#8b91a0">2 RXD</text>
-  <text x="576" y="218" font-size="10" font-family="ui-monospace,monospace" fill="#8b91a0">5 GND</text>
-  <text x="540" y="246" text-anchor="end" font-size="10" font-family="system-ui,sans-serif" fill="#8b91a0">your TX → device RX (pin 2)</text>
-  <text x="215" y="324" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif" fill="#8b91a0">3.3 V TTL UART</text>
-  <text x="505" y="324" text-anchor="middle" font-size="11" font-family="system-ui,sans-serif" fill="#8b91a0">RS-232 ±12 V</text>
-  <circle cx="156" cy="110" r="3.5" fill="#f0a53c"/>
-  <circle cx="156" cy="160" r="3.5" fill="#f0a53c"/>
-  <circle cx="156" cy="210" r="3.5" fill="#c9cdd6"/>
-  <circle cx="156" cy="260" r="3.5" fill="#c0574a"/>
+<figure class="wiring">
+<svg role="img" viewBox="0 0 720 330" width="100%" style="max-width:720px;height:auto" aria-label="RS-232 serial wiring through a MAX3232 level shifter. ESP32 TX connects to MAX3232 level shifter T1IN — signal. MAX3232 level shifter R1OUT connects to ESP32 RX — signal. ESP32 GND connects to MAX3232 level shifter GND — ground. ESP32 3V3 connects to MAX3232 level shifter VCC — power. MAX3232 level shifter T1OUT connects to DB9 2 — signal (your TX → device RX). DB9 3 connects to MAX3232 level shifter R1IN — signal. MAX3232 level shifter GND connects to DB9 5 — ground.">
+	<title>RS-232 serial wiring through a MAX3232 level shifter</title>
+	<defs>
+		<marker id="wire-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+			<path d="M 0 0 L 10 5 L 0 10 z" fill="var(--wire-signal, #f0a53c)"></path>
+		</marker>
+	</defs>
+	<rect x="0" y="0" width="720" height="330" rx="12" fill="var(--wire-surface, #171a1f)"></rect>
+	<rect x="24" y="44" width="182" height="242" rx="10" fill="none" stroke="var(--wire-hairline, #3a4150)" stroke-dasharray="4 4"></rect>
+	<text x="115" y="302" text-anchor="middle" font-size="10" font-family="system-ui,sans-serif" fill="var(--wire-faint, #8b91a0)">3.3 V TTL UART</text>
+	<rect x="430" y="44" width="230" height="242" rx="10" fill="none" stroke="var(--wire-hairline, #3a4150)" stroke-dasharray="4 4"></rect>
+	<text x="545" y="302" text-anchor="middle" font-size="10" font-family="system-ui,sans-serif" fill="var(--wire-faint, #8b91a0)">RS-232 ±12 V</text>
+	<path d="M 190 150 H 224.5 V 105 H 300" fill="none" stroke="var(--wire-signal, #f0a53c)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#wire-arrow)"></path>
+	<path d="M 300 150 H 238.16666666666666 V 190 H 190" fill="none" stroke="var(--wire-signal, #f0a53c)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#wire-arrow)"></path>
+	<path d="M 190 232 H 251.83333333333331 V 190 H 300" fill="none" stroke="var(--wire-ground, #c9cdd6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+	<path d="M 190 105 H 265.5 V 232 H 300" fill="none" stroke="var(--wire-power, #c0574a)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+	<path d="M 580 120 L 440 150" fill="none" stroke="var(--wire-signal, #f0a53c)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#wire-arrow)"></path>
+	<path d="M 440 105 L 580 165" fill="none" stroke="var(--wire-signal, #f0a53c)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#wire-arrow)"></path>
+	<text x="457.8" y="122.0" font-size="10" font-family="system-ui,sans-serif" fill="var(--wire-faint, #8b91a0)">your TX → device RX</text>
+	<path d="M 440 190 H 538 V 210 H 580" fill="none" stroke="var(--wire-ground, #c9cdd6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+	<g transform="translate(40 60)">
+	<rect x="0" y="0" width="150" height="210" rx="8" fill="var(--wire-board, #2e5b39)" stroke="var(--wire-board-edge, #3f7a4d)"></rect>
+	<rect x="26" y="76" width="74" height="58" rx="4" fill="#171a1f" stroke="var(--wire-hairline, #3a4150)"></rect>
+	<text x="63" y="110" text-anchor="middle" font-size="12" font-family="system-ui, sans-serif" fill="var(--wire-ink, #c9cdd6)">ESP32</text>
+	<text x="20" y="24" font-size="9" font-family="system-ui, sans-serif" fill="#9bbfa4">dev board</text>
+	<rect x="146" y="41" width="8" height="8" rx="1.5" fill="var(--wire-surface-2, #1f232b)" stroke="var(--wire-hairline, #3a4150)"></rect><text x="140" y="49" text-anchor="end" font-size="11" font-family="ui-monospace, monospace" fill="var(--wire-power, #c0574a)">3V3</text>
+	<rect x="146" y="86" width="8" height="8" rx="1.5" fill="var(--wire-surface-2, #1f232b)" stroke="var(--wire-hairline, #3a4150)"></rect><text x="140" y="94" text-anchor="end" font-size="11" font-family="ui-monospace, monospace" fill="var(--wire-signal, #f0a53c)">TX</text>
+	<rect x="146" y="126" width="8" height="8" rx="1.5" fill="var(--wire-surface-2, #1f232b)" stroke="var(--wire-hairline, #3a4150)"></rect><text x="140" y="134" text-anchor="end" font-size="11" font-family="ui-monospace, monospace" fill="var(--wire-signal, #f0a53c)">RX</text>
+	<rect x="146" y="168" width="8" height="8" rx="1.5" fill="var(--wire-surface-2, #1f232b)" stroke="var(--wire-hairline, #3a4150)"></rect><text x="140" y="176" text-anchor="end" font-size="11" font-family="ui-monospace, monospace" fill="var(--wire-ink, #c9cdd6)">GND</text>
+	</g>
+	<g transform="translate(300 60)">
+	<rect x="0" y="0" width="140" height="210" rx="6" fill="var(--wire-surface-2, #1f232b)" stroke="var(--wire-hairline, #3a4150)"></rect>
+	<rect x="42" y="84" width="56" height="44" rx="3" fill="#12151a" stroke="var(--wire-hairline, #3a4150)"></rect>
+	<text x="70" y="111" text-anchor="middle" font-size="10" font-family="ui-monospace, monospace" fill="var(--wire-faint, #8b91a0)">3232</text>
+	<text x="70" y="-10" text-anchor="middle" font-size="11" font-family="system-ui, sans-serif" fill="var(--wire-ink, #c9cdd6)">MAX3232 level shifter</text>
+	<rect x="-4" y="41" width="8" height="8" rx="1.5" fill="var(--wire-surface-2, #1f232b)" stroke="var(--wire-hairline, #3a4150)"></rect><text x="10" y="49" text-anchor="start" font-size="11" font-family="ui-monospace, monospace" fill="var(--wire-signal, #f0a53c)">T1IN</text>
+	<rect x="-4" y="86" width="8" height="8" rx="1.5" fill="var(--wire-surface-2, #1f232b)" stroke="var(--wire-hairline, #3a4150)"></rect><text x="10" y="94" text-anchor="start" font-size="11" font-family="ui-monospace, monospace" fill="var(--wire-signal, #f0a53c)">R1OUT</text>
+	<rect x="-4" y="126" width="8" height="8" rx="1.5" fill="var(--wire-surface-2, #1f232b)" stroke="var(--wire-hairline, #3a4150)"></rect><text x="10" y="134" text-anchor="start" font-size="11" font-family="ui-monospace, monospace" fill="var(--wire-ink, #c9cdd6)">GND</text>
+	<rect x="-4" y="168" width="8" height="8" rx="1.5" fill="var(--wire-surface-2, #1f232b)" stroke="var(--wire-hairline, #3a4150)"></rect><text x="10" y="176" text-anchor="start" font-size="11" font-family="ui-monospace, monospace" fill="var(--wire-power, #c0574a)">VCC</text>
+	<rect x="136" y="41" width="8" height="8" rx="1.5" fill="var(--wire-surface-2, #1f232b)" stroke="var(--wire-hairline, #3a4150)"></rect><text x="130" y="49" text-anchor="end" font-size="11" font-family="ui-monospace, monospace" fill="var(--wire-signal, #f0a53c)">T1OUT</text>
+	<rect x="136" y="86" width="8" height="8" rx="1.5" fill="var(--wire-surface-2, #1f232b)" stroke="var(--wire-hairline, #3a4150)"></rect><text x="130" y="94" text-anchor="end" font-size="11" font-family="ui-monospace, monospace" fill="var(--wire-signal, #f0a53c)">R1IN</text>
+	<rect x="136" y="126" width="8" height="8" rx="1.5" fill="var(--wire-surface-2, #1f232b)" stroke="var(--wire-hairline, #3a4150)"></rect><text x="130" y="134" text-anchor="end" font-size="11" font-family="ui-monospace, monospace" fill="var(--wire-ink, #c9cdd6)">GND</text>
+	</g>
+	<g transform="translate(580 90)">
+	<path d="M0 0 L64 18 L64 132 L0 150 Z" fill="none" stroke="var(--wire-hairline, #3a4150)" stroke-width="1.5"></path>
+	<text x="32" y="-12" text-anchor="middle" font-size="11" font-family="system-ui, sans-serif" fill="var(--wire-ink, #c9cdd6)">DB9</text>
+	<circle cx="0" cy="30" r="5" fill="var(--wire-surface-2, #1f232b)" stroke="var(--wire-hairline, #3a4150)"></circle>
+	<text x="14" y="34" font-size="10" font-family="ui-monospace, monospace" fill="var(--wire-faint, #8b91a0)">3 TXD</text>
+	<circle cx="0" cy="75" r="5" fill="var(--wire-surface-2, #1f232b)" stroke="var(--wire-hairline, #3a4150)"></circle>
+	<text x="14" y="79" font-size="10" font-family="ui-monospace, monospace" fill="var(--wire-faint, #8b91a0)">2 RXD</text>
+	<circle cx="0" cy="120" r="5" fill="var(--wire-surface-2, #1f232b)" stroke="var(--wire-hairline, #3a4150)"></circle>
+	<text x="14" y="124" font-size="10" font-family="ui-monospace, monospace" fill="var(--wire-faint, #8b91a0)">5 GND</text>
+	</g>
 </svg>
-<figcaption style="color:#8b91a0;font-size:0.85rem;margin-top:0.5rem">The MAX3232 shifts the ESP32's 3.3&nbsp;V UART to RS-232 ±12&nbsp;V. The TTL side is straight-through; the RS-232 side <strong>crosses</strong> — your <code>TX</code> reaches the device's <code>RX</code> (DB9 pin 2) and the device's <code>TX</code> (pin 3) returns to your <code>RX</code>.</figcaption>
+<figcaption>The MAX3232 shifts the ESP32's 3.3 V UART to RS-232 ±12 V. The TTL side runs straight through; the RS-232 side crosses.</figcaption>
 </figure>
 <ul>
 <li><strong>TX↔RX are crossed</strong> (your TX goes to the device’s RX). Many projectors also need a <strong>null-modem</strong>
@@ -137,5 +142,4 @@ driver, not the firmware.</li>
 </ul>
 <p>The proxy’s <code dir="auto">serial</code> role is a <strong>dumb pipe</strong> (RS-232 over TCP) — all the protocol lives in the hub driver
 (<a href="/docs/drivers/#epson">Epson</a>, <a href="/docs/drivers/#benq">BenQ</a>, <a href="/docs/drivers/#screen">Screen</a>, …), so one proxy
-serves whatever you point at it.</p>
-</div><footer class="sl-flex astro-xhxjzfa7"><div class="meta sl-flex astro-xhxjzfa7"></div><div class="pagination-links print:hidden astro-jgq3vlii" dir="ltr"><a href="/docs/proxies/wiring-ir/" rel="prev" class="astro-jgq3vlii"><svg aria-hidden="true" class="astro-jgq3vlii astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-jgq3vlii">Previous<br class="astro-jgq3vlii"><span class="link-title astro-jgq3vlii">Wiring: IR</span></span></a><a href="/docs/proxies/wiring-other/" rel="next" class="astro-jgq3vlii"><svg aria-hidden="true" class="astro-jgq3vlii astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-jgq3vlii">Next<br class="astro-jgq3vlii"><span class="link-title astro-jgq3vlii">Wiring: other scenarios</span></span></a></div></footer></div></div></main></div></div></div></div></body></html>
+serves whatever you point at it.</p></div><footer class="sl-flex astro-xhxjzfa7"><div class="meta sl-flex astro-xhxjzfa7"></div><div class="pagination-links print:hidden astro-jgq3vlii" dir="ltr"><a href="/docs/proxies/wiring-ir/" rel="prev" class="astro-jgq3vlii"><svg aria-hidden="true" class="astro-jgq3vlii astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-jgq3vlii">Previous<br class="astro-jgq3vlii"><span class="link-title astro-jgq3vlii">Wiring: IR</span></span></a><a href="/docs/proxies/wiring-other/" rel="next" class="astro-jgq3vlii"><svg aria-hidden="true" class="astro-jgq3vlii astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-jgq3vlii">Next<br class="astro-jgq3vlii"><span class="link-title astro-jgq3vlii">Wiring: other scenarios</span></span></a></div></footer></div></div></main></div></div></div></div></body></html>
