@@ -177,6 +177,11 @@ Storage grows with how many <em>kinds</em> of thing happen per hour rather than 
 <p><strong>Retention: two years</strong>, then deleted. That horizon is enforced by deletion on both the write path and the
 read path, and the tests prove that rows <em>go</em> rather than that a constant says 730 — a horizon nothing
 enforces buys the storage of keeping everything with the appearance of a limit.</p>
+<p><strong>You are told this during setup</strong>, on the page where you create the first account, rather than only here.
+There is no switch and you are not asked to agree to anything — this record is how the hub can show you your
+whole AI spend including the calls that never touch any service of ours, and it holds no words. What the
+setup page says is what this section says: counts for two years, none of the words, filed against a
+microphone where nobody was signed in, and readable by an admin.</p>
 <p><strong>Nothing here leaves the box.</strong> It is not reported to us, and it is deliberately excluded from the backup
 bundle: these rows say what each person in a household asked a model for and when, and restoring onto a
 second hub would import the first hub’s history as though it were the second’s.</p>
@@ -367,11 +372,17 @@ nothing”, never “kept everything because the database was busy”.</li>
 the record is built, so a caller that worked out a figure for a gateway call cannot get it into a row.</li>
 <li>The settings card and the review page must both keep stating who can read what.</li>
 <li>Retention horizons are enforced by deletion, and the tests assert that rows go.</li>
+<li>The setup page and <code dir="auto">/usage</code> both keep stating the two-year horizon, and both are pinned to the constant
+that does the deleting rather than to each other — so a page still saying <em>“two years”</em> after the horizon
+moved is a build failure. The same test pins that setup asks for exactly three fields, which is what keeps
+the disclosure from quietly growing a tickbox.</li>
 </ul>
 <p><strong>Merely likely</strong></p>
 <ul>
-<li>That the two-year horizon on the counts record is one you want. It is a default, and it is the only one on
-this page you are not asked about during setup.</li>
+<li>That the two-year horizon on the counts record is one you want. <strong>It is still the only thing on this page
+you are not asked about</strong> — there is no switch and there is no dropdown. What changed is that you are now
+<em>told</em>, on the setup page, instead of only here; being told is a weaker thing than being asked, and it is
+named as the weaker thing rather than dressed up as a choice.</li>
 <li>That a household reads the disclosure on the settings card before switching logging on. It is on the card,
 in bold, and nothing makes anybody read it.</li>
 <li>That pruning is actually keeping up. It runs at most once an hour per process, on the read and write paths;
