@@ -123,14 +123,22 @@ real sentences like <em>“never mind the lights, put the film on”</em>.</p></
 <p>The hub’s <strong>Activity</strong> page (<code dir="auto">/logs</code>) shows what the house is doing: the wire trace, the hub’s own log, the
 event feed and the commands that ran. Two of those are bounded rings in memory — <strong>the last 400 events</strong> and
 <strong>the last 500 commands</strong> — and both are lost on restart.</p>
-<p><strong>The event feed carries the words.</strong> When the assistant hears something, the frame published on the bus
-carries what was heard and what was answered. So even with conversation logging off, the last few hundred
-events include recent sentences.</p>
-<aside aria-label="Unguarded: who can read the Activity page" class="starlight-aside starlight-aside--caution"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path d="M12 16a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm10.67 1.47-8.05-14a3 3 0 0 0-5.24 0l-8 14A3 3 0 0 0 3.94 22h16.12a3 3 0 0 0 2.61-4.53Zm-1.73 2a1 1 0 0 1-.88.51H3.94a1 1 0 0 1-.88-.51 1 1 0 0 1 0-1l8-14a1 1 0 0 1 1.78 0l8.05 14a1 1 0 0 1 .05 1.02v-.02ZM12 8a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1Z"></path></svg>Unguarded: who can read the Activity page</p><div class="starlight-aside__content"><p><code dir="auto">/logs</code> carries no role restriction. Anyone signed in to the hub — including a Viewer, the tier meant for
-<em>“somebody holding a remote”</em> — can open it and read the recent event feed, including sentences somebody else
-spoke in another room. This is deliberate for the wire trace and the device log, which a Viewer troubleshooting
-their own remote genuinely needs; it was not a decision about transcripts, and it is stated here rather than
-left to be discovered.</p><p>It is bounded by the ring: 400 events, and a restart empties it.</p></div></aside>
+<p><strong>The event feed no longer carries the words.</strong> When the assistant hears something, the frame published on
+the bus says <em>that</em> an exchange happened, in which room, whether it worked, and a turn id — not what was said
+or what came back. It used to carry both, which made the ring a transcript that the conversation-log switch
+did not govern. A reader entitled to the words follows the turn id to the conversation log, where the
+audience rules are the ones described below.</p>
+<aside aria-label="Guaranteed: the Activity page and the debug dock agree" class="starlight-aside starlight-aside--tip"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path fill-rule="evenodd" d="M1.44 8.855v-.001l3.527-3.516c.34-.344.802-.541 1.285-.548h6.649l.947-.947c3.07-3.07 6.207-3.072 7.62-2.868a1.821 1.821 0 0 1 1.557 1.557c.204 1.413.203 4.55-2.868 7.62l-.946.946v6.649a1.845 1.845 0 0 1-.549 1.286l-3.516 3.528a1.844 1.844 0 0 1-3.11-.944l-.858-4.275-4.52-4.52-2.31-.463-1.964-.394A1.847 1.847 0 0 1 .98 10.693a1.843 1.843 0 0 1 .46-1.838Zm5.379 2.017-3.873-.776L6.32 6.733h4.638l-4.14 4.14Zm8.403-5.655c2.459-2.46 4.856-2.463 5.89-2.33.134 1.035.13 3.432-2.329 5.891l-6.71 6.71-3.561-3.56 6.71-6.711Zm-1.318 15.837-.776-3.873 4.14-4.14v4.639l-3.364 3.374Z" clip-rule="evenodd"></path><path d="M9.318 18.345a.972.972 0 0 0-1.86-.561c-.482 1.435-1.687 2.204-2.934 2.619a8.22 8.22 0 0 1-1.23.302c.062-.365.157-.79.303-1.229.415-1.247 1.184-2.452 2.62-2.935a.971.971 0 1 0-.62-1.842c-.12.04-.236.084-.35.13-2.02.828-3.012 2.588-3.493 4.033a10.383 10.383 0 0 0-.51 2.845l-.001.016v.063c0 .536.434.972.97.972H2.24a7.21 7.21 0 0 0 .878-.065c.527-.063 1.248-.19 2.02-.447 1.445-.48 3.205-1.472 4.033-3.494a5.828 5.828 0 0 0 .147-.407Z"></path></svg>Guaranteed: the Activity page and the debug dock agree</p><div class="starlight-aside__content"><p><code dir="auto">/logs</code> is <strong>Admin and Operator</strong>, which is what the debug dock beside it has always been. The two show the
+same four views, so a Viewer used to be denied the dock and served the full-screen version of it — and the
+event feed in it carries sentences somebody spoke in another room. A test reads the roles out of the layout’s
+own markup and fails if the page and the dock ever drift apart.</p><p>A Viewer loses nothing they could reach anywhere else: the dock was already closed to them.</p></div></aside>
+<aside aria-label="Unguarded: a conversation is readable while it is still open" class="starlight-aside starlight-aside--caution"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path d="M12 16a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm10.67 1.47-8.05-14a3 3 0 0 0-5.24 0l-8 14A3 3 0 0 0 3.94 22h16.12a3 3 0 0 0 2.61-4.53Zm-1.73 2a1 1 0 0 1-.88.51H3.94a1 1 0 0 1-.88-.51 1 1 0 0 1 0-1l8-14a1 1 0 0 1 1.78 0l8.05 14a1 1 0 0 1 .05 1.02v-.02ZM12 8a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1Z"></path></svg>Unguarded: a conversation is readable while it is still open</p><div class="starlight-aside__content"><p>One route to the words survives on purpose. While a conversation is open — five minutes from the last thing
+said — <code dir="auto">GET /api/voice/conversation/{source}</code> returns it to anyone signed in, or to anything holding a
+read-scoped API key, <strong>whether or not conversation logging is on</strong>.</p><p>It is left there rather than overlooked. The phone app’s assistant feed reads that route to draw its own
+bubbles, so closing it would break the app for everyone who is not an admin; and there is no per-caller
+narrowing to fall back on, because <code dir="auto">source</code> names a microphone and is never checked against who is signed in
+— this hub genuinely does not know whose words those are. What remains is one live conversation for five
+minutes, rather than a 400-event ring and an unbounded stream. Tightening it is a separate decision.</p></div></aside>
 <p>Anything you build on top of an event — a rule that triggers on somebody speaking, a webhook — is yours, and
 what it does with the words is outside anything described here.</p>
 <div class="sl-heading-wrapper level-h3"><h3 id="counts-costs-and-timings--always-on">Counts, costs and timings — always on</h3><a class="sl-anchor-link" href="#counts-costs-and-timings--always-on"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Counts, costs and timings — always on”</span></a></div>
@@ -391,8 +399,10 @@ horizon, so this is a privacy matter rather than a correctness one — and it is
 </ul>
 <p><strong>Unguarded</strong></p>
 <ul>
-<li><strong>Who can read the Activity page.</strong> <code dir="auto">/logs</code> has no role restriction, and the event feed on it carries recent
-sentences. Bounded to 400 events and cleared by a restart, but not gated.</li>
+<li><strong>A conversation while it is still open.</strong> <code dir="auto">GET /api/voice/conversation/{source}</code> returns the live
+five-minute conversation to anyone signed in, or to any read-scoped API key, whichever way the conversation
+log is set. The phone app reads it, and <code dir="auto">source</code> cannot be narrowed to a person, so it is deliberate rather
+than missed. The event feed and the Activity page no longer carry the words.</li>
 <li><strong>Which conversations are whose.</strong> <code dir="auto">source</code> is supplied by the caller and never checked against who is
 signed in, so it identifies a microphone and cannot be relied on to identify anything else.</li>
 <li><strong>Anything you build on an event.</strong> A rule or a webhook that fires on somebody speaking can send those words
