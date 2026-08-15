@@ -550,3 +550,74 @@ p { text-wrap: pretty; }
 
 @media (prefers-reduced-motion: reduce) { .prox-wire::after { animation: none; opacity: 0; }
   .rem, .byo-rem { rotate: 0deg !important; } }
+
+/* ============ Prose page (privacy.html) ============
+   The landing page is all bespoke layout; this is the site's only long-form reading surface, so it gets one
+   narrow measure and no motion of its own. Everything here reuses the tokens above rather than introducing
+   colours — a second palette on a page about honesty would be its own small lie. */
+.doc { max-width: 58rem; margin-inline: auto; padding: clamp(2.5rem, 6vw, 4.5rem) var(--pad) clamp(3rem, 8vw, 6rem); }
+.doc-head { margin-bottom: clamp(2rem, 4vw, 3rem); }
+.doc h1.display { font-size: clamp(2.1rem, 5.2vw, 3.5rem); margin-bottom: 1.2rem; }
+.doc-lede { font-size: clamp(1.05rem, 1.7vw, 1.28rem); color: var(--ink-muted); line-height: 1.55; max-width: 52ch; }
+.doc-stamp { margin-top: 1.4rem; font-size: 0.76rem; color: var(--ink-faint); }
+
+.doc-sec { margin-top: clamp(2.6rem, 6vw, 4rem); scroll-margin-top: 5rem; }
+.doc-sec > h2 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.022em; line-height: 1.12;
+  font-size: clamp(1.5rem, 3vw, 2.15rem); text-wrap: balance; }
+.doc-sec > h2 + p { margin-top: 1rem; }
+.doc h3 { margin-top: 2rem; font-size: clamp(1.1rem, 1.9vw, 1.32rem); }
+.doc p { color: var(--ink-muted); margin-top: 0.9rem; max-width: 68ch; }
+.doc p b, .doc li b, .doc td b { color: var(--ink); }
+.doc .ticks { margin: 1.2rem 0; }
+.doc .ticks li { max-width: 66ch; }
+.doc .optional-note { margin-top: 1.4rem; max-width: 68ch; }
+
+/* Links in prose need to look like links; the nav's colour-only treatment is not enough at body size. */
+.doc-body a:not(.btn), .doc-head a:not(.btn) { color: var(--amber-text); border-bottom: 1px solid var(--amber-line);
+  transition: color .16s, border-color .16s; }
+.doc-body a:not(.btn):hover, .doc-head a:not(.btn):hover { color: var(--amber-hi); border-color: var(--amber-hi); }
+
+/* Contents rail. Plain list on purpose — this page is read top to bottom more often than jumped around. */
+.doc-toc { margin-top: 1.8rem; padding: 1.1rem 1.3rem; border-radius: var(--r); background: oklch(0.198 0.013 264 / 0.6);
+  border: 1px solid var(--border); }
+.doc-toc h2 { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-faint); font-weight: 500; }
+.doc-toc ol { list-style: none; padding: 0; margin: 0.7rem 0 0; display: grid; gap: 0.4rem; font-size: 0.94rem; }
+.doc-toc a { color: var(--ink-muted); }
+.doc-toc a:hover { color: var(--amber-text); }
+
+/* Tables. The horizontal scroll wrapper matters more than it looks: a four-column table of sub-processors is
+   the one thing on this site that cannot be allowed to overflow off a phone unread. */
+.doc-table { overflow-x: auto; margin-top: 1.4rem; border: 1px solid var(--border); border-radius: var(--r);
+  background: oklch(0.17 0.012 264 / 0.7); }
+.doc-table table { border-collapse: collapse; width: 100%; min-width: 34rem; font-size: 0.92rem; }
+.doc-table th, .doc-table td { text-align: left; vertical-align: top; padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border); }
+.doc-table thead th { font-family: var(--font-body); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.03em;
+  text-transform: uppercase; color: var(--amber-text); background: oklch(0.198 0.013 264 / 0.8);
+  border-bottom-color: var(--border-strong); white-space: nowrap; }
+.doc-table td { color: var(--ink-muted); }
+.doc-table tbody tr:last-child th, .doc-table tbody tr:last-child td { border-bottom: 0; }
+.doc-table tbody th { font-weight: 700; color: var(--ink); white-space: nowrap; }
+
+/* The three honesty tiers, kept visually distinct so nobody reads a "merely likely" as a guarantee. */
+.tiers { display: grid; gap: 1rem; margin-top: 1.6rem; }
+@media (min-width: 900px) { .tiers { grid-template-columns: repeat(3, 1fr); align-items: start; } }
+.tier { padding: 1.3rem 1.4rem; border-radius: var(--r); background: var(--surface); border: 1px solid var(--border); }
+.tier h3 { margin: 0 0 0.2rem; font-size: 1.05rem; }
+.tier > p { font-size: 0.82rem; color: var(--ink-faint); margin-top: 0.15rem; }
+.tier ul { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 0.75rem; font-size: 0.9rem; color: var(--ink-muted); }
+.tier li { padding-left: 1.25rem; position: relative; }
+.tier li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 7px; height: 7px; border-radius: 50%;
+  background: currentColor; opacity: 0.55; }
+.tier-guaranteed { border-color: var(--amber-line); }
+.tier-guaranteed h3 { color: var(--amber-text); }
+.tier-guaranteed li::before { background: var(--amber); box-shadow: 0 0 9px var(--amber-glow); opacity: 1; }
+.tier-unguarded { background: var(--bg-deep); }
+
+/* Answering "so what do I do about it" in the same breath as the disclosure. */
+.doc-outs { display: grid; gap: 0.9rem; margin-top: 1.4rem; }
+@media (min-width: 760px) { .doc-outs { grid-template-columns: repeat(2, 1fr); } }
+.doc-out { padding: 1.1rem 1.25rem; border-radius: var(--r); background: var(--surface); border: 1px solid var(--border); }
+.doc-out b { display: block; font-family: var(--font-display); font-size: 1rem; margin-bottom: 0.3rem; }
+.doc-out span { color: var(--ink-muted); font-size: 0.92rem; }

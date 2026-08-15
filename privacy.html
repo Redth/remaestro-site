@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Same trick as the landing page: mark that JS is live before CSS so nothing can be hidden by a reveal
+     that never fires. This page carries no .reveal elements at all — see the note above <main> — but the
+     class is set anyway so the nav behaves identically. -->
+<script>document.documentElement.classList.add('js');</script>
+<title>What happens to your data — reMaestro</title>
+<meta name="description" content="What reMaestro writes down, where it lives, how long it stays, and every outside company that ever receives anything. A description of the software, not a legal document." />
+<meta name="theme-color" content="#1b1a18" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="What happens to your data — reMaestro" />
+<meta property="og:description" content="What the hub keeps, what the optional cloud service keeps, and the full list of outside companies anything is ever sent to." />
+<meta property="og:url" content="https://remaestro.app/privacy.html" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css?v=20260815a" />
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="stagelight" aria-hidden="true"></div>
+
+<!-- icon sprite — only the symbols this page uses, copied verbatim from index.html so the two cannot drift
+     into two drawings of one icon. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5h6a3 3 0 0 1 2 1 3 3 0 0 1 2-1h6v13h-6a3 3 0 0 0-2 1 3 3 0 0 0-2-1H4z"/><path d="M12 6v13"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.6-3 8.2-7 10-4-1.8-7-5.4-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 8h9M17 8h3M4 16h3M11 16h9"/><circle cx="15" cy="8" r="2.2"/><circle cx="9" cy="16" r="2.2"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v4M15 3v4M6.5 7h11v3a5.5 5.5 0 0 1-11 0zM12 15.5V21"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.9 5.4L19 10l-5.1 1.6L12 17l-1.9-5.4L5 10l5.1-1.6z" fill="currentColor" stroke="none"/></symbol>
+</defs></svg>
+
+<header class="nav" id="top">
+  <a class="brand" href="/" aria-label="reMaestro home">
+    <span class="brand-mark" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </span>
+    <span class="brand-name">re<b>Maestro</b></span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/#control"><svg class="ic"><use href="#i-sliders"/></svg>Control</a>
+    <a href="/#compat"><svg class="ic"><use href="#i-plug"/></svg>Compatibility</a>
+    <a href="/#ai"><svg class="ic"><use href="#i-sparkle"/></svg>Assistant</a>
+    <a href="/#selfhosted"><svg class="ic"><use href="#i-shield"/></svg>Self-hosted</a>
+    <a href="/docs/"><svg class="ic"><use href="#i-book"/></svg>Docs</a>
+  </nav>
+  <a class="btn btn-ghost nav-cta" href="/docs/install/">Get started <svg class="ic"><use href="#i-arrow"/></svg></a>
+</header>
+
+<!-- Deliberately no .reveal anywhere below. The landing page's reveals are short cards; these are long prose
+     sections, and IntersectionObserver's 12% threshold is not reliably met by an element taller than the
+     viewport. A section that never reveals is a section nobody can read — an acceptable risk for a marquee
+     of brand names, and not one worth taking on the page describing what we do with somebody's data. -->
+<main id="main" class="doc">
+
+  <header class="doc-head">
+    <p class="hero-kicker mono">Privacy</p>
+    <h1 class="display">What happens to <span class="amber">your data</span></h1>
+    <p class="doc-lede">reMaestro runs on a box in your house. Most questions about where your data goes have
+      the answer <em>it didn't go anywhere</em>. This page is the rest of the answer: what the software writes
+      down, how long it keeps it, and every outside company that ever receives anything.</p>
+
+    <p class="optional-note">
+      <svg class="ic"><use href="#i-shield"/></svg>
+      <span><b>This is not a privacy policy, and it is not written as one.</b> A privacy policy is a set of
+        legal commitments — who is answerable for your data, which law applies, what you can compel anybody
+        to do about it.
+        Those are claims about a business, not facts about software, and writing them here would be inventing
+        them. What this page does instead is describe what the software actually does, which is checkable.
+        There is a longer and more technical version of all of it in
+        <a href="/docs/privacy/">the documentation</a>.</span>
+    </p>
+
+    <p class="doc-stamp mono">Last reviewed 15 August 2026 · describes the software as it currently ships</p>
+  </header>
+
+  <nav class="doc-toc" aria-label="On this page">
+    <h2>On this page</h2>
+    <ol>
+      <li><a href="#short">The short version</a></li>
+      <li><a href="#hub">The box in your house</a></li>
+      <li><a href="#leaves">The one thing your hub sends us</a></li>
+      <li><a href="#cloud">reMaestro Cloud, if you use it</a></li>
+      <li><a href="#others">Everyone outside reMaestro who receives anything</a></li>
+      <li><a href="#site">This website</a></li>
+      <li><a href="#outs">If you'd rather none of that happened</a></li>
+      <li><a href="#honest">What's enforced, what's merely true, and what isn't covered</a></li>
+    </ol>
+  </nav>
+
+  <div class="doc-body">
+
+    <!-- ============ SHORT VERSION ============ -->
+    <section class="doc-sec" id="short">
+      <h2>The short version</h2>
+      <p>Six things can be written down. Four of them live on your own hub and never leave it. Two of them
+        only exist if you decide to use the optional hosted service.</p>
+
+      <div class="doc-table">
+        <table>
+          <thead>
+            <tr><th scope="col">What</th><th scope="col">Where it lives</th><th scope="col">On by default?</th><th scope="col">How long</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">A conversation you're having</th>
+              <td>Your hub, in memory</td><td>Yes</td>
+              <td>5 minutes after you stop talking; 2 hours for the assistant on a screen</td>
+            </tr>
+            <tr>
+              <th scope="row">The live feed of events and commands</th>
+              <td>Your hub, in memory</td><td>Yes</td>
+              <td>The last 400 events and 500 commands, gone when it restarts</td>
+            </tr>
+            <tr>
+              <th scope="row">Counts, costs and timings of AI calls</th>
+              <td>Your hub, on disk</td><td><b>Yes</b></td>
+              <td>2 years</td>
+            </tr>
+            <tr>
+              <th scope="row"><b>What was actually said</b></th>
+              <td>Your hub, on disk</td><td><b>No</b></td>
+              <td>90 days by default; you choose anything from 7 days to forever</td>
+            </tr>
+            <tr>
+              <th scope="row">Counts, costs and timings of gateway calls</th>
+              <td>reMaestro Cloud</td><td>Only if you use the cloud AI gateway</td>
+              <td>30 days per call; 24 months as hourly totals</td>
+            </tr>
+            <tr>
+              <th scope="row">Your backups</th>
+              <td>reMaestro Cloud</td><td>Only if you switch it on</td>
+              <td>Until you delete them — encrypted, unless you turned that off</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><b>The row most people don't expect is the third one.</b> A hub keeps a two-year record of how much
+        AI it used and who asked for it, out of the box, whether or not you ever touch reMaestro Cloud. It
+        contains no words — that is enforced by tests rather than promised — but it is a record of activity per
+        person, and it is on without anybody being asked. You are told about it on the page where you create
+        the first account, and it is described in full in
+        <a href="/docs/privacy/hub/#counts-costs-and-timings--always-on">the hub documentation</a>.</p>
+    </section>
+
+    <!-- ============ THE HUB ============ -->
+    <section class="doc-sec" id="hub">
+      <h2>The box in your house</h2>
+      <p>The hub is your machine. Nothing described in this section is sent to reMaestro, and most of it is
+        not sent anywhere at all.</p>
+
+      <h3>Out of the box, it keeps no record of anything anybody said</h3>
+      <p>That is the shipped state, not a suggestion. Writing down conversations is a switch, it is off until
+        somebody turns it on, and the code checks whether it is on before every single write rather than
+        reading it once when it starts. If reading that setting fails, the answer is <em>off</em> — the failure
+        mode of a privacy switch has to be "kept nothing", never "kept everything because the disk was busy".</p>
+
+      <h3>What it keeps anyway</h3>
+      <ul class="ticks">
+        <li><b>The conversation you're in the middle of</b>, in memory, so that <em>"no, the other one"</em>
+          works. Five minutes after the last thing said for voice, two hours for the assistant on a screen.
+          Then it's gone, and none of it touched the disk.</li>
+        <li><b>A live feed of what the house is doing</b> — the last 400 events and 500 commands, in memory,
+          lost on restart. It no longer carries the words: an event says <em>that</em> an exchange happened,
+          in which room, and whether it worked.</li>
+        <li><b>Counts, costs and timings of every AI call</b>, on disk, for two years. How many calls, how many
+          worked, tokens and seconds of audio, what it cost where the hub could know, how long it took, and
+          who or what asked. No prompt, no transcript, no reply, no filename, no room name. This exists
+          because your hub is the only thing that can see <em>all</em> of your AI spend, including calls made
+          straight to a provider on your own key that never touch any service of ours.</li>
+      </ul>
+
+      <h3>If you switch conversation logging on</h3>
+      <p>Then the hub starts writing down what was said, what was typed, what came back, which tools the
+        assistant called and which commands actually reached a device — so you can read a conversation
+        afterwards instead of inferring it from a chart. Ninety days by default; 7 days, 30, 90, a year or
+        <em>keep everything</em> are the choices, and <em>keep everything</em> is a labelled option on a
+        dropdown rather than a box you can leave blank. Turning the switch back off asks whether you want to
+        keep what's there or delete it, and takes neither on its own.</p>
+      <p><b>The uncomfortable part, stated rather than buried:</b> any admin account on your hub can read
+        every conversation on it, including ones they were not part of. Everybody else reads only
+        conversations carrying their own account id, which in practice means the assistant on a screen and
+        nothing else. The reason is that a microphone is not a person — a handset on a coffee table has no
+        session and no sign-in, so the hub genuinely does not know whose words those are, and attributing them
+        to whoever was last signed in somewhere else would be a claim nothing in the house could support.</p>
+
+      <h3>Your AI key is yours, and the words go where you point them</h3>
+      <p>The assistant is off until you give it a model to talk to. If you point it at a provider on your own
+        key, your conversations go to that provider and to nobody else — nothing is copied to us on the way
+        past, because there is no route by which it could be. If you'd rather nothing left the house at all,
+        the hub will talk to a model running on a machine of your own.</p>
+    </section>
+
+    <!-- ============ WHAT LEAVES ============ -->
+    <section class="doc-sec" id="leaves">
+      <h2>The one thing your hub sends us</h2>
+      <p>It checks for updates. Unless you turn that off in <b>Settings → Updates</b>, your hub asks
+        <span class="mono">releases.remaestro.app</span> on a timer whether there's a newer release, and
+        fetches the manifest and its signature.</p>
+      <p>That request carries three things and no more: <b>your internet address</b>, because every HTTP
+        request carries one; <b>which channel you follow</b>, because it's in the URL
+        (<span class="mono">stable.json</span> or <span class="mono">beta.json</span>); and <b>the version
+        you're running</b>, because the hub puts it in the browser-identification header
+        (<span class="mono">remaestro/1.2.3</span>). There is no hub identifier, no account, no device list
+        and no usage figure in it, and there is no other request — nothing reports back afterwards, and
+        installing an update is still a button somebody presses.</p>
+      <p><b>So the phrase "nothing phones home" needs one qualification, and this is it.</b> Nothing about
+        your house is reported to us. The box does open outbound connections: this update check, and then
+        whatever <em>you</em> point it at — your own AI provider, your media server, a TV guide source, a
+        light bridge. Switch off automatic checks and the update request stops too; you then check by hand
+        when you feel like it.</p>
+    </section>
+
+    <!-- ============ CLOUD ============ -->
+    <section class="doc-sec" id="cloud">
+      <h2>reMaestro Cloud, if you use it</h2>
+      <p>Optional, and <b>the hub must never need it</b>. Every feature it fronts has a local equivalent that
+        keeps working if the service is switched off, unreachable, or shut down for good. If you have not
+        linked a hub to an account, nothing in this section applies to you and nothing about your house exists
+        on any machine of ours.</p>
+      <p>Two separate things can send bytes to it, with two separate switches: the <b>AI gateway</b>, and
+        <b>cloud backup</b>. You can use either without the other.</p>
+
+      <h3>What it knows about you as a customer</h3>
+      <p>In full: your <b>email address</b>, an <b>account id</b> we minted, a hash of your password, when you
+        signed up, when you last signed in, which plan you're on, and the hubs you've linked — for each one, a
+        name you chose and a hash of its token, never the token itself. Nothing about the devices in your
+        house, and nothing that could be used to control them.</p>
+      <p>Signing in is the only thing your address is used for. <b>The service has no way to send you email</b>
+        — there is no mail sender anywhere in it — so there is no mailing list, and there cannot be one until
+        somebody writes code that does not currently exist.</p>
+
+      <h3>The AI gateway</h3>
+      <p>The gateway exists so you don't have to bring your own key. It is a metered proxy: a request arrives
+        from your hub, we forward it upstream, and we count what it cost.</p>
+      <p><b>Be clear about this before switching it on.</b> If you point your hub's reasoning at the gateway,
+        then the conversation — what somebody said, plus the block of context your hub builds about your house,
+        which includes your device names and your room descriptions — is in the request that reaches us, and we
+        forward it on. That is what a gateway <em>is</em>. And if you point <b>transcription</b> at it, the
+        audio clip goes the same way — the recording itself, not a transcript of it. Who all of that goes to
+        is <a href="#others">named below</a>, and the alternatives are on the same settings page: your own key
+        straight to a vendor, or a model on a machine in your own house. The setup we'd recommend is a mixture
+        — a cloud model doing the thinking and a Whisper server of your own doing the listening, so the words
+        leave and the audio doesn't.</p>
+      <p>Two things stay behind that you might expect to travel. <b>Deciding which device to touch happens
+        entirely on your hub</b> — the gateway never learns which light was dimmed or what was sent to it; it
+        sees a conversation and returns an answer. And <b>nothing in the request is written down</b>: the
+        service keeps one row per call and then hourly totals, and those rows have no field capable of holding
+        a prompt, a transcript, a reply, a filename or an IP address. That is not a promise about what we
+        choose to store — the type that holds every word in that record has a private constructor, the only
+        values it can contain are compiled into one file, and four separate tests fail the build if any of
+        that stops being true.</p>
+      <p>Per-call rows are deleted after <b>30 days</b>; the hourly totals after <b>24 months</b>. Both
+        horizons are enforced by actually deleting rows, and the tests check that rows go rather than that a
+        constant says the right number.</p>
+
+      <h3>Cloud backup</h3>
+      <p>Each backup gets a fresh random key, the backup is encrypted with it, and that key is then wrapped
+        separately by each unlock method you have — your hub's own key, and a recovery code shown to you once.
+        <b>The server stores the encrypted bytes and the wrapped keys, and never the key itself</b>: enough to
+        <em>store</em> a backup, and never enough to <em>open</em> one. What it can see either way is the
+        size, the timing, the count and which account they belong to.</p>
+      <p>The recovery code is the one thing you have to keep, and that is the honest cost of the server not
+        being able to read your backups. You may instead choose <b>unencrypted</b> backups — no code, nothing
+        to lose — and if you do, <b>reMaestro can read the contents</b>, which are a credential dump: device
+        keys, your AI key, a TLS private key. The settings screen says exactly that, in those words. Encrypted
+        is the default.</p>
+      <p>Two things on your hub are excluded from a backup by name, so they cannot reach the service even
+        inside a sealed blob: <b>the conversation log</b>, and <b>the hub's own usage history</b>. That
+        exclusion is enforced in both directions, including on restore.</p>
+      <p><b>Your sealed backups sit on the service's own disk.</b> There is no third-party storage provider
+        involved, and naming one that does not exist would be as wrong as omitting one that does.</p>
+    </section>
+
+    <!-- ============ SUB-PROCESSORS ============ -->
+    <section class="doc-sec" id="others">
+      <h2>Everyone outside reMaestro who receives anything</h2>
+      <p>This is the list people actually want, so here it is in one table rather than scattered through the
+        prose. If you self-host and never create a cloud account, only the last two rows can ever apply to
+        you — and the last one only when you visit this website.</p>
+
+      <div class="doc-table">
+        <table>
+          <thead>
+            <tr><th scope="col">Who</th><th scope="col">What reaches them</th><th scope="col">When</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">OpenRouter</th>
+              <td>Your conversation with the assistant, and the context your hub builds about your house —
+                device names, room names, activities. OpenRouter forwards it to whichever model vendor
+                answers.</td>
+              <td>Only if you point your hub's reasoning at the reMaestro Cloud gateway. Never if you use your
+                own key, or a model on your own machine.</td>
+            </tr>
+            <!-- Transcription is not one destination. Each transcription model on the gateway's list
+                 carries the route it belongs to, so which of the next two rows applies is decided per model
+                 rather than per deployment — see SpeechCatalog.SpeechPrice.Route in the service source. Both
+                 are named because both are live; a third possibility, a Whisper server the operator runs, is
+                 covered in the prose under the table rather than here, because it is not an outside party. -->
+            <tr>
+              <th scope="row">OpenAI</th>
+              <td>The audio of anything you say to the assistant, as a clip, plus the language you told it to
+                expect. Not the rest of the conversation, and nothing about your devices.</td>
+              <td>Only if you point your hub's transcription at the reMaestro Cloud gateway, and only for the
+                models served that way.</td>
+            </tr>
+            <tr>
+              <th scope="row">OpenRouter <span class="mono">(audio)</span></th>
+              <td>The same clip, where the model you're using is served through OpenRouter instead. It
+                forwards it to whichever speech-to-text vendor answers.</td>
+              <td>Only if you point your hub's transcription at the reMaestro Cloud gateway, and only for the
+                models served that way.</td>
+            </tr>
+            <tr>
+              <th scope="row">GitHub</th>
+              <td>Your internet address, the release channel you follow, and the version you're on — nothing
+                else. GitHub serves the release manifest your hub asks for, and serves this website.</td>
+              <td>Every automatic update check, unless you switch them off; and every visit to this site.</td>
+            </tr>
+            <tr>
+              <th scope="row">Google</th>
+              <td>Your internet address and browser, because this site loads its typefaces from Google Fonts.
+                Nothing from your hub ever reaches them.</td>
+              <td>Every visit to a page on remaestro.app, including the documentation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><b>Audio is the row to read twice.</b> Which of the two transcription rows applies to a given clip
+        depends on the model your hub is set to use, not on some deployment-wide choice — the service's price
+        list records, per model, which upstream serves it. So on one day some clips can go to OpenAI and
+        others through OpenRouter. A third destination is possible and is not in the table because it is not
+        an outside party at all: a Whisper server run on the operator's own machines, where the audio reaches
+        no third company. <b>You cannot tell which from the outside</b>, and if that distinction matters to
+        you, the reliable answer is to transcribe on a machine of your own rather than through the gateway.</p>
+
+      <p><b>Otherwise that is the whole list.</b> Not on it, deliberately and checkably: no analytics, no
+        advertising or tracking pixels, no error-reporting service, no chat widget, no customer-messaging
+        tool, no email provider, and no third-party storage or backup provider. Outside the two font requests
+        this website makes, the only external addresses anywhere in the hosted service's source code are the
+        AI upstreams above.</p>
+
+      <h3>Where the service itself runs</h3>
+      <p>reMaestro Cloud runs on <b>hardware the operator controls</b>, and your sealed backups sit on that
+        hardware's own disks. Nobody is handed readable data in order to host it: what is on those disks is
+        the ciphertext of your backups and a database of counts and costs, and the key that would open a
+        backup is not there and never was.</p>
+      <p><b>Where that hardware physically sits may change</b>, and this page does not commit to a location or
+        to a hosting company — because committing to one would be a claim we'd have to keep true through the
+        next machine move rather than a fact about the software. What does not change is the sentence above
+        it: if the day comes that a hosting provider is between you and the service, they go
+        <a href="#others">in the table above</a> as a named recipient, because that is where a company that
+        can reach the disk belongs. The cost of that flexibility is
+        <a href="#honest">stated as a gap</a> rather than left for you to notice.</p>
+
+      <h3>Once a request leaves us, it is out of our hands</h3>
+      <p>What a model vendor does with a conversation after it has been forwarded to them is governed by their
+        terms and not by anything on this page. Nothing described here reaches into it. If that matters to
+        you, the answer is not to use the gateway: point your hub at a provider on your own key, or at a model
+        running in your own house. Both are supported and neither is a downgrade.</p>
+    </section>
+
+    <!-- ============ THE WEBSITE ============ -->
+    <section class="doc-sec" id="site">
+      <h2>This website</h2>
+      <p>It is a handful of static files on GitHub Pages, so GitHub's servers see the ordinary things a web
+        server sees — your address, the page you asked for, your browser's identification. There are
+        <b>no cookies, no analytics and no tracking of any kind</b> on it, which you can confirm by reading
+        the page source; there is nothing to opt out of because nothing is collected.</p>
+      <p>The one exception is worth naming rather than glossing: <b>the typefaces come from Google Fonts</b>,
+        which means your browser makes a request to Google when a page loads. That is a real third party on
+        an otherwise self-contained site, and it applies to the documentation as well as to these pages.</p>
+    </section>
+
+    <!-- ============ WHAT TO DO ABOUT IT ============ -->
+    <section class="doc-sec" id="outs">
+      <h2>If you'd rather none of that happened</h2>
+      <p>Every item above has a control, and none of them costs you the product.</p>
+      <div class="doc-outs">
+        <div class="doc-out">
+          <b>Don't create a cloud account</b>
+          <span>The whole of reMaestro Cloud becomes irrelevant. The hub does not need it and does not
+            degrade without it.</span>
+        </div>
+        <div class="doc-out">
+          <b>Bring your own AI key</b>
+          <span>Your conversations go straight from your hub to the provider you chose. Nothing passes
+            through us, because there is no path by which it could.</span>
+        </div>
+        <div class="doc-out">
+          <b>Run the model in your own house</b>
+          <span>Point the hub at a model on a machine of your own, and a Whisper server for the listening, and
+            neither the words nor the audio leave your network.</span>
+        </div>
+        <div class="doc-out">
+          <b>Leave conversation logging off</b>
+          <span>It is off until you turn it on. Left alone, your hub never writes down a word anybody said.</span>
+        </div>
+        <div class="doc-out">
+          <b>Turn off automatic update checks</b>
+          <span>Then the hub makes no outbound request to us at all, and you check for a release when it suits
+            you.</span>
+        </div>
+        <div class="doc-out">
+          <b>Keep your backups encrypted</b>
+          <span>The default. Keep the recovery code somewhere safe and the server cannot open them, however
+            much anybody would like it to.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HONEST SUMMARY ============ -->
+    <section class="doc-sec" id="honest">
+      <h2>What's enforced, what's merely true, and what isn't covered</h2>
+      <p>Some of what's above is enforced by a test that fails the build. Some of it is a default nobody has
+        changed. Some of it is nothing at all. Those are three different kinds of statement, and running them
+        together is how a page like this turns into reassurance instead of information — so they're marked
+        apart, the same way <a href="/docs/privacy/">the documentation</a> marks them.</p>
+
+      <div class="tiers">
+        <div class="tier tier-guaranteed">
+          <h3>Guaranteed</h3>
+          <p>Enforced in code. A change that broke it would fail the build.</p>
+          <ul>
+            <li>No prompt, transcript, reply, filename or IP address can enter the counts-and-costs record —
+              on your hub or in the cloud.</li>
+            <li>The conversation log cannot enter a backup, in either direction, including on restore.</li>
+            <li>Conversation logging is off until somebody turns it on, and a failure to read that setting is
+              answered "off".</li>
+            <li>Retention horizons are enforced by deleting rows, and the tests check that rows actually go.</li>
+            <li>The server cannot open an encrypted backup: it never holds the key.</li>
+            <li>Your hub cannot record a cost for a gateway call, so it can't invent a figure about somebody
+              else's price list.</li>
+          </ul>
+        </div>
+        <div class="tier">
+          <h3>Merely likely</h3>
+          <p>True today, because of a default or a judgement. Nothing would notice if it changed.</p>
+          <ul>
+            <li>That you keep your recovery code. Nothing can help if you don't — that is the design.</li>
+            <li>That an unencrypted backup was chosen deliberately rather than clicked past. The screen says
+              what it costs; nothing makes anybody read it.</li>
+            <li>That the two-year horizon on the counts record is one you want. It is the only thing here you
+              are <em>told</em> about rather than <em>asked</em> about, and that is a weaker thing.</li>
+            <li>That deleting is keeping up. It runs on the read and write paths; if the database refuses,
+              rows sit past their horizon until it succeeds. Nothing reads them, and it is logged.</li>
+          </ul>
+        </div>
+        <div class="tier tier-unguarded">
+          <h3>Unguarded</h3>
+          <p>Nothing in the product addresses this. Named anyway, because the alternative is you find out.</p>
+          <ul>
+            <li><b>What a model vendor does with a request after it leaves us.</b> Their retention is theirs.</li>
+            <li><b>Where the service physically runs, and therefore which country's law it sits under.</b>
+              This page does not state it and does not commit to it. The hardware is the operator's, and
+              where it sits may change; nothing here promises it will be one place or another.</li>
+            <li><b>Which upstream transcribed a given clip.</b> It depends on the model, and you can't see it
+              from your side. Transcribe on your own machine if you need to know.</li>
+            <li><b>Ordinary server logs.</b> Anything answering HTTP has an operator, and infrastructure
+              logging is not the analytics record and is not covered by the guarantees on the left.</li>
+            <li><b>A conversation while it's still open.</b> For five minutes, anyone signed in to your hub —
+              or anything holding a read-scoped API key — can read the live conversation, whichever way the
+              logging switch is set. The phone app depends on it.</li>
+            <li><b>Anything you build on top.</b> A rule or a webhook that fires when somebody speaks can send
+              those words wherever you pointed it, and nothing here constrains that.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="doc-stamp mono">Everything on this page describes the software as it ships. Where it and the
+        documentation ever disagree, the documentation is the longer answer and the source code is the
+        actual one.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="foot-brand">
+    <span class="brand-mark small" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+    <span class="brand-name">re<b>Maestro</b></span>
+  </div>
+  <p class="mono">The self-hosted brain for your whole home theatre.</p>
+  <nav class="foot-links" aria-label="Footer">
+    <a href="/docs/">Docs</a>
+    <a href="/docs/install/raspberry-pi/">Install on a Pi</a>
+    <a href="/docs/install/docker/">Docker</a>
+    <a href="/docs/drivers/">Supported devices</a>
+    <a href="/docs/architecture/">Architecture</a>
+    <a href="/privacy.html">Privacy</a>
+  </nav>
+  <p class="foot-fine">© 2026 reMaestro · self-hosted · no cloud · no lock-in</p>
+</footer>
+
+<script src="main.js?v=20260731b" defer></script>
+</body>
+</html>

@@ -96,8 +96,36 @@ your hub, we forward it upstream, and we count what it cost.</p>
 <p><strong>Be clear about this before switching it on.</strong> If you point the hub’s reasoning at the gateway, then the
 conversation — what somebody said, plus the block of context the hub builds about your house, which includes
 your device names and your room descriptions — is in the request body that reaches us, and we forward it to
-<strong>OpenRouter</strong>, who forward it to whichever model vendor answers. If you point transcription at the gateway,
-the audio clip goes the same way.</p>
+<strong>OpenRouter</strong>, who forward it to whichever model vendor answers.</p>
+<p>If you point <strong>transcription</strong> at the gateway, the audio clip goes upstream too — and it does <em>not</em> all go to
+one place. <strong>Each transcription model on the price list carries the route it belongs to</strong>, so which of these
+applies is decided per model rather than per deployment:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Route</th><th>Where the clip goes</th><th>Whose key</th></tr></thead><tbody><tr><td><strong>The speech endpoint</strong></td><td>Whatever address the operator set. In practice that is <strong>OpenAI</strong> — it is the default and it is in live use — or a <strong>Whisper server the operator runs</strong>, in which case the audio reaches no third company at all</td><td>Ours, or none for a Whisper server on a private network</td></tr><tr><td><strong>OpenRouter</strong></td><td>OpenRouter’s own <code dir="auto">/audio/transcriptions</code>, and on to whichever speech-to-text vendor serves that model</td><td>Ours</td></tr></tbody></table>
+<p>So a single deployment can legitimately send some clips to OpenAI and others through OpenRouter, and
+<strong>nothing on the hub’s side tells you which</strong> — the hub asks for a model, not for a company. If that
+distinction matters to you, the answer is the same one as for the words: transcribe on a box of your own. An
+empty price list is also a valid state and means the deployment offers no transcription at all; the hub then
+declines to offer the switch rather than offering one that refuses every clip.</p>
 <p>That is what a gateway <em>is</em>, and the alternatives are on the same settings page: point the hub straight at a
 vendor on your own key, or run a model on a box in your own house. The recommended setup is a mixture — a
 cloud model doing the thinking and a local Whisper server doing the listening, so the words leave and the
@@ -289,10 +317,17 @@ what it costs, in those words, and nothing makes anybody read it.</li>
 </ul>
 <p><strong>Unguarded</strong></p>
 <ul>
-<li><strong>What happens to a request after it leaves us.</strong> The gateway forwards to OpenRouter, who forward to a model
-vendor. Their retention is theirs, and nothing described here reaches into it. If that matters to you, the
-answer is not to use the gateway — point the hub at a vendor on your own key, or at a model in your own
-house. Both are supported and neither is a downgrade.</li>
+<li><strong>What happens to a request after it leaves us.</strong> Conversations go to <strong>OpenRouter</strong>, who forward to a model
+vendor. Audio goes to <strong>OpenAI</strong> or to <strong>OpenRouter</strong>, per model, or to a Whisper server the operator runs —
+see the routing table above. Their retention is theirs, and nothing described here reaches into it. If that
+matters to you, the answer is not to use the gateway — point the hub at a vendor on your own key, or at a
+model in your own house. Both are supported and neither is a downgrade.</li>
+<li><strong>Which upstream transcribed a given clip.</strong> It follows the model, and a hub asks for a model rather than
+for a company. There is nothing on the hub’s side that reports it back.</li>
+<li><strong>Where this service physically runs, and therefore which country’s law it sits under.</strong> The hardware is the
+operator’s and where it sits may change; neither this page nor
+<a href="https://remaestro.app/privacy.html">the customer-facing summary</a> commits to a location. What the hardware
+holds is ciphertext and counts — see the backup section above for what that does and does not protect.</li>
 <li><strong>Operational logs.</strong> This page describes what the product stores as a design. A service that serves HTTP
 has an operator, and ordinary infrastructure logging is not the analytics record and is not covered by the
 guards above.</li>
