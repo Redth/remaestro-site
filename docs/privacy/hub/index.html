@@ -407,13 +407,22 @@ than missed. The event feed and the Activity page no longer carry the words.</li
 signed in, so it identifies a microphone and cannot be relied on to identify anything else.</li>
 <li><strong>Anything you build on an event.</strong> A rule or a webhook that fires on somebody speaking can send those words
 wherever you pointed it, and nothing here constrains that.</li>
-<li><strong>The update check, which is the one request this box makes to us.</strong> Unless it is switched off in
+<li><strong>The update check, which is one of the two requests this box makes to us.</strong> Unless it is switched off in
 <strong>Settings → Updates</strong>, the hub asks <code dir="auto">releases.remaestro.app</code> on a timer for the release manifest. That
 carries the box’s internet address, the channel in the URL (<code dir="auto">stable.json</code> or <code dir="auto">beta.json</code>), and the running
 version in the <code dir="auto">User-Agent</code> — no hub id, no account, no device list, and nothing derived from anything on
 this page. It is named here because <em>“nothing on this page is sent to us”</em> is a statement about records and
 not about sockets, and the difference is the sort of thing a reader is entitled to be told rather than to
 work out. Switching automatic checks off stops the request.</li>
+<li><strong>The plugin list, which is the other one, and which is not on a timer.</strong> Opening <strong>Plugins</strong> and pressing
+<strong>Show what’s published</strong> asks <code dir="auto">extensions.remaestro.app</code> for the signed list of published plugins;
+installing one from that list asks for that plugin’s own signed document. Those carry the box’s internet
+address and which plugin was asked about, because it is in the URL — no hub id, no account, no list of what
+is installed, and, unlike the update check, <strong>not the running version</strong>: the hub fetches the whole document
+and works out at home which build it can run. <strong>Nothing fetches this on a schedule</strong>, so a household that
+never opens that page never makes the request at all, and installing a plugin from a link somebody handed
+you does not involve us in any way. The archive itself comes from wherever its publisher keeps it, which is
+usually somebody else entirely.</li>
 <li><strong>The wire trace.</strong> Command arguments appear on the Activity page’s trace with credential-shaped keys
 masked — but the masking works on the argument’s <em>name</em>, so a value that arrived under a name like <code dir="auto">text</code> or
 <code dir="auto">channel</code> is not masked. There is a separate guard that stops the assistant authoring such a value, but the

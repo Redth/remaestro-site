@@ -87,7 +87,7 @@
     <ol>
       <li><a href="#short">The short version</a></li>
       <li><a href="#hub">The box in your house</a></li>
-      <li><a href="#leaves">The one thing your hub sends us</a></li>
+      <li><a href="#leaves">The two things your hub sends us</a></li>
       <li><a href="#cloud">reMaestro Cloud, if you use it</a></li>
       <li><a href="#others">Everyone outside reMaestro who receives anything</a></li>
       <li><a href="#site">This website</a></li>
@@ -202,8 +202,11 @@
 
     <!-- ============ WHAT LEAVES ============ -->
     <section class="doc-sec" id="leaves">
-      <h2>The one thing your hub sends us</h2>
-      <p>It checks for updates. Unless you turn that off in <b>Settings → Updates</b>, your hub asks
+      <h2>The two things your hub sends us</h2>
+      <p><b>One happens on a timer. The other happens when you press a button, and never otherwise.</b></p>
+
+      <h3>It checks for updates</h3>
+      <p>Unless you turn that off in <b>Settings → Updates</b>, your hub asks
         <span class="mono">releases.remaestro.app</span> on a timer whether there's a newer release, and
         fetches the manifest and its signature.</p>
       <p>That request carries three things and no more: <b>your internet address</b>, because every HTTP
@@ -211,10 +214,26 @@
         (<span class="mono">stable.json</span> or <span class="mono">beta.json</span>); and <b>the version
         you're running</b>, because the hub puts it in the browser-identification header
         (<span class="mono">remaestro/1.2.3</span>). There is no hub identifier, no account, no device list
-        and no usage figure in it, and there is no other request — nothing reports back afterwards, and
-        installing an update is still a button somebody presses.</p>
+        and no usage figure in it, and nothing reports back afterwards — installing an update is still a
+        button somebody presses.</p>
+
+      <h3>It asks for the plugin list, when you go looking for one</h3>
+      <p>A plugin is a driver somebody else wrote, for a device this hub didn't ship knowing about. Open
+        <b>Plugins</b> and press <b>Show what's published</b>, and your hub asks
+        <span class="mono">extensions.remaestro.app</span> for the signed list of them; pressing
+        <b>Install</b> on one asks for that plugin's own signed document. The plugin itself is then
+        downloaded from wherever its publisher keeps it, which is usually not us.</p>
+      <p>Those requests carry <b>your internet address</b>, and <b>which plugin you asked about</b>, because
+        it is in the URL. That is all. There is no hub identifier, no account, and no list of what you have
+        installed — and unlike the update check, <b>not even the version you're running</b>: the hub fetches
+        the whole list and works out at home which of it will run here.</p>
+      <p><b>Nothing here is on a timer.</b> Your hub never fetches this on its own, so if you never open that
+        page, it is never asked for. And installing a plugin from a link somebody gave you involves us not at
+        all, which is deliberate and permanent: the registry is a place plugins are easier to find, never how
+        they are installed.</p>
+
       <p><b>So the phrase "nothing phones home" needs one qualification, and this is it.</b> Nothing about
-        your house is reported to us. The box does open outbound connections: this update check, and then
+        your house is reported to us. The box does open outbound connections: those two, and then
         whatever <em>you</em> point it at — your own AI provider, your media server, a TV guide source, a
         light bridge. Switch off automatic checks and the update request stops too; you then check by hand
         when you feel like it.</p>
@@ -324,8 +343,11 @@
             <tr>
               <th scope="row">GitHub</th>
               <td>Your internet address, the release channel you follow, and the version you're on — nothing
-                else. GitHub serves the release manifest your hub asks for, and serves this website.</td>
-              <td>Every automatic update check, unless you switch them off; and every visit to this site.</td>
+                else. GitHub serves the release manifest your hub asks for, serves the plugin list when you
+                ask for one, and serves this website. The plugin list is the one request of the three that
+                doesn't carry your version.</td>
+              <td>Every automatic update check, unless you switch them off; every time you open the plugin
+                list or install a plugin from it; and every visit to this site.</td>
             </tr>
             <tr>
               <th scope="row">Google</th>
@@ -409,8 +431,9 @@
         </div>
         <div class="doc-out">
           <b>Turn off automatic update checks</b>
-          <span>Then the hub makes no outbound request to us at all, and you check for a release when it suits
-            you.</span>
+          <span>Then the hub makes no outbound request to us on its own at all, and you check for a release
+            when it suits you. The only other one it can make is the plugin list, and that happens when you
+            press the button that fetches it.</span>
         </div>
         <div class="doc-out">
           <b>Keep your backups encrypted</b>
