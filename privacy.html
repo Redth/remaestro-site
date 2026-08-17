@@ -217,12 +217,18 @@
         and no usage figure in it, and nothing reports back afterwards — installing an update is still a
         button somebody presses.</p>
 
-      <h3>It asks for the plugin list, when you go looking for one</h3>
+      <h3>It asks for the plugin list, when you open the Marketplace</h3>
       <p>A plugin is a driver somebody else wrote, for a device this hub didn't ship knowing about. Open
-        <b>Plugins</b> and press <b>Show what's published</b>, and your hub asks
+        <b>Plugins → Marketplace</b> and your hub asks
         <span class="mono">extensions.remaestro.app</span> for the signed list of them; pressing
         <b>Install</b> on one asks for that plugin's own signed document. The plugin itself is then
         downloaded from wherever its publisher keeps it, which is usually not us.</p>
+      <p>It shows you the list it saved last time straight away and asks for a fresh one behind that, so the
+        page is never waiting on us — but the request is the same request either way, and it happens because
+        you opened the page.</p>
+      <p><b>Plugins → Installed asks us nothing at all.</b> That page lists what is on your hub, and
+        everything on it is already on your hub. Opening it, reading it, or removing a plugin from it makes
+        no request to anybody.</p>
       <p>Those requests carry <b>your internet address</b>, and <b>which plugin you asked about</b>, because
         it is in the URL. That is all. There is no hub identifier, no account, and no list of what you have
         installed — and unlike the update check, <b>not even the version you're running</b>: the hub fetches
@@ -346,8 +352,8 @@
                 else. GitHub serves the release manifest your hub asks for, serves the plugin list when you
                 ask for one, and serves this website. The plugin list is the one request of the three that
                 doesn't carry your version.</td>
-              <td>Every automatic update check, unless you switch them off; every time you open the plugin
-                list or install a plugin from it; and every visit to this site.</td>
+              <td>Every automatic update check, unless you switch them off; every time you open the
+                Marketplace or install a plugin from it; and every visit to this site.</td>
             </tr>
             <tr>
               <th scope="row">Google</th>
@@ -433,7 +439,7 @@
           <b>Turn off automatic update checks</b>
           <span>Then the hub makes no outbound request to us on its own at all, and you check for a release
             when it suits you. The only other one it can make is the plugin list, and that happens when you
-            press the button that fetches it.</span>
+            open the Marketplace — never on a schedule, and never from any other page.</span>
         </div>
         <div class="doc-out">
           <b>Keep your backups encrypted</b>
