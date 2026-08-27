@@ -85,6 +85,7 @@
 <li><strong>username</strong> / <strong>password</strong> — Kodi web-interface credentials, if set.</li>
 </ul>
 <div class="sl-heading-wrapper level-h2"><h2 id="what-it-can-do">What it can do</h2><a class="sl-anchor-link" href="#what-it-can-do"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “What it can do”</span></a></div>
+<p>It is a whole remote, not just a transport. Every command id below is one the shared command vocabulary already knows, so a remote drawn against <code dir="auto">nav.up</code> or <code dir="auto">color.red</code> reaches a Kodi box with nothing to map by hand — and the driver ships a layout of its own, offered as soon as a Kodi is added.</p>
 
 
 
@@ -114,7 +115,70 @@
 
 
 
-<table><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody><tr><td><code dir="auto">play_pause</code> / <code dir="auto">pause</code> / <code dir="auto">resume</code> / <code dir="auto">stop</code></td><td>Control playback</td></tr><tr><td><code dir="auto">seek_relative</code></td><td>Seek by a relative amount</td></tr><tr><td><code dir="auto">seek_to</code></td><td>Seek to a position</td></tr><tr><td><code dir="auto">set_volume</code></td><td>Set the volume</td></tr><tr><td><code dir="auto">open</code></td><td>Play a URL or path (e.g. a Jellyfin/Plex stream URL)</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody><tr><td><code dir="auto">up</code> / <code dir="auto">down</code> / <code dir="auto">left</code> / <code dir="auto">right</code> / <code dir="auto">select</code></td><td>The d-pad</td></tr><tr><td><code dir="auto">back</code> / <code dir="auto">home</code> / <code dir="auto">menu</code> / <code dir="auto">info</code> / <code dir="auto">exit</code></td><td>The keys around it — <code dir="auto">menu</code> is Kodi’s context menu</td></tr><tr><td><code dir="auto">page_up</code> / <code dir="auto">page_down</code></td><td>Page through a long list</td></tr><tr><td><code dir="auto">settings</code> / <code dir="auto">guide</code> / <code dir="auto">channel_list</code> / <code dir="auto">recordings</code></td><td>Jump straight to a screen</td></tr><tr><td><code dir="auto">top_menu</code></td><td>The root menu of a DVD or Blu-ray</td></tr><tr><td><code dir="auto">play_pause</code> / <code dir="auto">pause</code> / <code dir="auto">resume</code> / <code dir="auto">stop</code></td><td>Control playback</td></tr><tr><td><code dir="auto">next</code> / <code dir="auto">previous</code></td><td>Move through a playlist or between chapters</td></tr><tr><td><code dir="auto">rewind</code> / <code dir="auto">fast_forward</code></td><td>Step through Kodi’s scan speeds</td></tr><tr><td><code dir="auto">seek_relative</code> / <code dir="auto">seek_to</code></td><td>Seek by an amount, or to a position</td></tr><tr><td><code dir="auto">record</code></td><td>Live TV, with a PVR add-on enabled</td></tr><tr><td><code dir="auto">volume_up</code> / <code dir="auto">volume_down</code> / <code dir="auto">set_volume</code></td><td>Volume, stepped by the box or set outright</td></tr><tr><td><code dir="auto">mute</code> / <code dir="auto">mute_on</code> / <code dir="auto">mute_off</code></td><td>Mute as a toggle, or either half of it</td></tr><tr><td><code dir="auto">channel_up</code> / <code dir="auto">channel_down</code></td><td>PVR channel change</td></tr><tr><td><code dir="auto">number_0</code> … <code dir="auto">number_9</code>, <code dir="auto">enter</code>, <code dir="auto">backspace</code></td><td>Number entry</td></tr><tr><td><code dir="auto">red</code> / <code dir="auto">green</code> / <code dir="auto">yellow</code> / <code dir="auto">blue</code></td><td>The colour keys, for teletext and the PVR</td></tr><tr><td><code dir="auto">subtitle</code> / <code dir="auto">audio_track</code> / <code dir="auto">aspect_ratio</code></td><td>Media options for whatever is playing</td></tr><tr><td><code dir="auto">launch_app</code></td><td>Run a Kodi add-on by id, e.g. <code dir="auto">plugin.video.youtube</code></td></tr><tr><td><code dir="auto">text</code></td><td>Type into whatever Kodi has focused</td></tr><tr><td><code dir="auto">raw_command</code></td><td>Any Kodi action by name — the long tail</td></tr><tr><td><code dir="auto">open</code></td><td>Play a URL or path (e.g. a Jellyfin/Plex stream URL)</td></tr></tbody></table>
 <p>It carries <code dir="auto">media.player</code> and <code dir="auto">media.library</code> traits. It reports rich <code dir="auto">playback.*</code> and <code dir="auto">volume.changed</code> state, and extracts the Jellyfin item id from a stream URL so playback ties back to the source.</p>
 <div class="sl-heading-wrapper level-h2"><h2 id="notes">Notes</h2><a class="sl-anchor-link" href="#notes"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Notes”</span></a></div>
+<p><strong>A press is a press.</strong> The navigation keys go to Kodi as <code dir="auto">Input.*</code> calls, which it accepts, queues and acknowledges — exactly as a real remote puts a pulse in the air. Success means the box took the press, not that something on screen moved. The commands that genuinely need something to be playing say so instead: pressing <em>Next</em> or <em>Subtitles</em> at an idle box reports that nothing was playing, rather than quietly doing nothing. <em>Stop</em> is the exception, because a box that is already stopped has done what was asked.</p>
+<p><strong>Which Kodi it is.</strong> The driver asks the box once, and reports it as <code dir="auto">version</code> (e.g. <code dir="auto">20.2 (Nexus)</code>) and <code dir="auto">apiVersion</code> (e.g. <code dir="auto">13.3.0</code>). That matters because a house can hold two boxes several major versions apart: Kodi’s action list is a closed set that grows release by release, so a command can be perfectly correct and still impossible on the box in front of it. When that happens the failure names the box, the version and the action it would not take — rather than the raw JSON-RPC error.</p>
+<p><strong>Power is deliberately absent.</strong> Kodi can shut its own box down, and nothing here can turn it back on — a Kodi that is off has no JSON-RPC port to ask. A power-off with no route back is worse than no power control at all, so neither is offered. Suspend, reboot and party mode are left out for a different reason: the shared vocabulary has no honest name for them, and the nearest-looking alias (<code dir="auto">sleep</code>, which belongs to power-off) would map them to the wrong thing.</p>
 <p>Kodi is a good target for the <code dir="auto">open</code> command: point Jellyfin or Plex <code dir="auto">stream_url</code> output at it via a rule to play resolved content.</p></div><footer class="sl-flex astro-xhxjzfa7"><div class="meta sl-flex astro-xhxjzfa7"></div><div class="pagination-links print:hidden astro-jgq3vlii" dir="ltr"><a href="/docs/drivers/media/jellyfin/" rel="prev" class="astro-jgq3vlii"><svg aria-hidden="true" class="astro-jgq3vlii astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-jgq3vlii">Previous<br class="astro-jgq3vlii"><span class="link-title astro-jgq3vlii">Jellyfin</span></span></a><a href="/docs/drivers/media/plex/" rel="next" class="astro-jgq3vlii"><svg aria-hidden="true" class="astro-jgq3vlii astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-jgq3vlii">Next<br class="astro-jgq3vlii"><span class="link-title astro-jgq3vlii">Plex</span></span></a></div></footer></div></div></main></div></div></div></div></body></html>

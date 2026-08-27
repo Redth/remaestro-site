@@ -281,7 +281,15 @@ without a threat model is marketing.</p>
 <div class="sl-heading-wrapper level-h3"><h3 id="the-unencrypted-opt-out-stated-plainly">The unencrypted opt-out, stated plainly</h3><a class="sl-anchor-link" href="#the-unencrypted-opt-out-stated-plainly"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “The unencrypted opt-out, stated plainly”</span></a></div>
 <p>You may choose <strong>unencrypted</strong> backups instead — no recovery code, nothing to lose. If you do, <strong>reMaestro can
 read the contents</strong>, and the contents are a credential dump: device API keys, pre-shared keys, your AI key, a
-TLS private key. The settings screen says that in those words.</p>
+TLS private key, and whatever anybody has configured your plugins with. The settings screen says that in
+those words.</p>
+<p><strong>One qualification, in the direction that helps you rather than us.</strong> A value a device’s driver or a plugin
+<em>declared</em> to be a credential is encrypted before it is written to your hub’s database at all, under a key
+that lives on the hub and is deliberately kept out of its own backups — so those particular values are
+ciphertext inside the bundle whichever way you set this switch. That is a narrower protection than it sounds
+and it is stated narrowly: it does not cover a credential typed into a field nobody declared as one, it does
+not cover your TLS key, and the flip side is that a backup restored onto different hardware cannot open them,
+so those fields arrive blank and are typed in again.</p>
 <p>Encrypted is the default. The opt-out exists because <em>“I’d rather never be locked out”</em> is a legitimate
 position, and hiding it behind a false promise of both would be worse.</p>
 <div class="sl-heading-wrapper level-h3"><h3 id="what-is-deliberately-not-in-a-backup-at-all">What is deliberately not in a backup at all</h3><a class="sl-anchor-link" href="#what-is-deliberately-not-in-a-backup-at-all"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “What is deliberately not in a backup at all”</span></a></div>

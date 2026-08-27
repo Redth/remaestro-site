@@ -407,14 +407,30 @@ than missed. The event feed and the Activity page no longer carry the words.</li
 signed in, so it identifies a microphone and cannot be relied on to identify anything else.</li>
 <li><strong>Anything you build on an event.</strong> A rule or a webhook that fires on somebody speaking can send those words
 wherever you pointed it, and nothing here constrains that.</li>
-<li><strong>The update check, which is one of the two requests this box makes to us.</strong> Unless it is switched off in
+<li><strong>A plugin you installed, and everything it is handed — including who is in the household.</strong> This is the
+one entry on this page about a party we cannot name in advance, because you choose it and it does not exist
+when this page is written. A plugin is an ordinary program running with the hub’s own privileges: there is
+no sandbox, no permission prompt and no capability grant, and no amount of packaging or signing changes
+that — signing says <em>who published this</em>, never <em>this is safe</em>.
+<br>What that means concretely, because “unbounded” is not a useful sentence on its own. When you configure
+a plugin on its own page, the hub hands that plugin what you typed <strong>and the name your account goes by</strong>,
+so it can address you rather than a row. It can log those names, keep them, or send them anywhere, and
+nothing in the product observes or constrains it. The same is true of everything else it can reach: your
+devices, their state, and whatever it does with the network. The hub does its own part — a setting you
+declared as a credential is encrypted in the database and in your backups, and a plugin’s own settings
+belong to the person who typed them rather than to the house — but all of that stops at the moment the
+plugin is handed the value.
+<br><strong>Nothing about who is signed in reaches anything else below the interface.</strong> A command, a device and
+the AI assistant all still run with no idea who asked; this is the one boundary a person crosses, and it
+crosses only to a plugin you installed on purpose.</li>
+<li><strong>The update check, which is one of the three requests this box makes to us.</strong> Unless it is switched off in
 <strong>Settings → Updates</strong>, the hub asks <code dir="auto">releases.remaestro.app</code> on a timer for the release manifest. That
 carries the box’s internet address, the channel in the URL (<code dir="auto">stable.json</code> or <code dir="auto">beta.json</code>), and the running
 version in the <code dir="auto">User-Agent</code> — no hub id, no account, no device list, and nothing derived from anything on
 this page. It is named here because <em>“nothing on this page is sent to us”</em> is a statement about records and
 not about sockets, and the difference is the sort of thing a reader is entitled to be told rather than to
 work out. Switching automatic checks off stops the request.</li>
-<li><strong>The plugin list, which is the other one, and which is not on a timer.</strong> Opening <strong>Plugins → Marketplace</strong>
+<li><strong>The plugin list, which is the second, and which is not on a timer.</strong> Opening <strong>Plugins → Marketplace</strong>
 asks <code dir="auto">extensions.remaestro.app</code> for the signed list of published plugins; installing one from that list
 asks for that plugin’s own signed document. The page draws the copy it saved last time immediately and
 revalidates behind it, so it never waits on us — the request is unchanged, and it is caused by the
@@ -425,7 +441,22 @@ and works out at home which build it can run. <strong>Nothing fetches this on a 
 never opens that page never makes the request at all, and installing a plugin from a link somebody handed
 you does not involve us in any way. The archive itself comes from wherever its publisher keeps it, which is
 usually somebody else entirely.</li>
-<li><strong>Plugins → Installed is not one of the two, and that is worth saying.</strong> It lists what is on the box, from
+<li><strong>What people thought of those plugins, which is the third, and which goes to a machine of ours.</strong> The
+other two are static files on a file host; this one is <code dir="auto">cloud.remaestro.app</code>, and the difference is worth
+stating rather than glossing. Ratings cannot live in the signed plugin list — that list is signed when it is
+published, and an average that moves when somebody clicks would mean re-signing the whole feed each time,
+which turns the signature from <em>“we published this”</em> into <em>“this was true at 14:03”</em>. So opening <strong>Plugins →
+Marketplace</strong> asks that host for the ratings, straight after asking for the list. <strong>That read carries the
+box’s internet address and nothing else</strong> — no account, no hub id, no version, and <strong>not which plugin is
+being looked at</strong>, because it is one request for every rating there is and the hub matches them up locally.
+<strong>Nothing fetches this on a schedule</strong> either, and no record of the request is kept. Leaving a rating <em>does</em>
+need a reMaestro Cloud account, and on a linked hub the press sends which plugin and how many stars under
+the hub’s token — one rating per plugin per account, changeable, and a withdrawal deletes it rather than
+hiding it. <strong>There are no written reviews:</strong> there is nowhere to type one and no column that could hold one,
+and a test fails the build if either grows. On a hub with no account the buttons do not appear, the ratings
+still show, and a failure to fetch them costs one quiet line and nothing else — browsing and installing are
+unaffected, and an unrated plugin reads as <em>“no ratings yet”</em> rather than as nought stars.</li>
+<li><strong>Plugins → Installed is not one of the three, and that is worth saying.</strong> It lists what is on the box, from
 the box, and makes no request to anybody — so checking whether a driver is running, or removing one, is
 entirely local. The split is described here rather than left as an interface detail because it is the
 difference between “the plugins screen talks to us” and “one of the two plugin screens does”.</li>

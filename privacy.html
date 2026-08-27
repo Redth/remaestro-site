@@ -87,7 +87,7 @@
     <ol>
       <li><a href="#short">The short version</a></li>
       <li><a href="#hub">The box in your house</a></li>
-      <li><a href="#leaves">The two things your hub sends us</a></li>
+      <li><a href="#leaves">The three things your hub sends us</a></li>
       <li><a href="#cloud">reMaestro Cloud, if you use it</a></li>
       <li><a href="#others">Everyone outside reMaestro who receives anything</a></li>
       <li><a href="#site">This website</a></li>
@@ -202,8 +202,9 @@
 
     <!-- ============ WHAT LEAVES ============ -->
     <section class="doc-sec" id="leaves">
-      <h2>The two things your hub sends us</h2>
-      <p><b>One happens on a timer. The other happens when you press a button, and never otherwise.</b></p>
+      <h2>The three things your hub sends us</h2>
+      <p><b>One happens on a timer. The other two happen when you open one particular page, and never
+        otherwise.</b></p>
 
       <h3>It checks for updates</h3>
       <p>Unless you turn that off in <b>Settings → Updates</b>, your hub asks
@@ -238,8 +239,31 @@
         all, which is deliberate and permanent: the registry is a place plugins are easier to find, never how
         they are installed.</p>
 
+      <h3>It asks what people thought of those plugins, on the same page</h3>
+      <p>Plugins can be rated out of five. Those ratings can't live in the signed plugin list — that list is
+        a set of files we sign when we publish them, and a number that changes every time somebody clicks
+        would mean re-signing the lot each time, which would turn the signature from "we published this" into
+        "this was true at two o'clock". So the ratings come from <span class="mono">cloud.remaestro.app</span>
+        instead, and opening <b>Plugins → Marketplace</b> asks for them straight after asking for the list.</p>
+      <p><b>This is the one request that goes to a machine of ours rather than to a file host, so be exact
+        about what is in it.</b> It carries <b>your internet address</b>, because every request does, and
+        nothing else at all — no account, no hub identifier, no version, and <b>not which plugin you are
+        looking at</b>: it is one request for every rating there is, and your hub matches them up at home. We
+        keep no record of it.</p>
+      <p><b>Rating one does need an account</b>, and that is the point of asking for one: it ties a rating to
+        something that costs a little to make and that can be taken away. If you have linked this hub to a
+        reMaestro Cloud account, the star buttons appear and pressing one sends <b>which plugin</b> and
+        <b>how many stars</b>, under your hub's token. One rating per plugin per account, changeable, and
+        withdrawing one deletes it rather than hiding it. <b>There are no written reviews</b> — there is
+        nowhere to type one, and no field in the database that could hold one.</p>
+      <p><b>If you have not linked an account, none of that appears</b> and nothing is sent but the read
+        above. The ratings still show, because they are decoration on a shelf rather than a feature you buy.
+        And if that request fails — no internet, or the service is down — the page says so in one quiet line
+        and carries on: browsing and installing are entirely unaffected, and a plugin with no rating shown
+        reads as <em>"no ratings yet"</em> rather than as nought stars.</p>
+
       <p><b>So the phrase "nothing phones home" needs one qualification, and this is it.</b> Nothing about
-        your house is reported to us. The box does open outbound connections: those two, and then
+        your house is reported to us. The box does open outbound connections: those three, and then
         whatever <em>you</em> point it at — your own AI provider, your media server, a TV guide source, a
         light bridge. Switch off automatic checks and the update request stops too; you then check by hand
         when you feel like it.</p>
@@ -252,6 +276,10 @@
         keeps working if the service is switched off, unreachable, or shut down for good. If you have not
         linked a hub to an account, nothing in this section applies to you and nothing about your house exists
         on any machine of ours.</p>
+      <p>One thing on that host is not part of this and does not need an account: <b>reading the plugin
+        ratings</b>, described above. An unlinked hub asks for them when somebody opens the Marketplace, that
+        request carries nothing but the internet address every request carries, and no record of it is kept —
+        so there is no account here for a hub that has never made one.</p>
       <p>Two separate things can send bytes to it, with two separate switches: the <b>AI gateway</b>, and
         <b>cloud backup</b>. You can use either without the other.</p>
 
@@ -297,8 +325,8 @@
       <p>The recovery code is the one thing you have to keep, and that is the honest cost of the server not
         being able to read your backups. You may instead choose <b>unencrypted</b> backups — no code, nothing
         to lose — and if you do, <b>reMaestro can read the contents</b>, which are a credential dump: device
-        keys, your AI key, a TLS private key. The settings screen says exactly that, in those words. Encrypted
-        is the default.</p>
+        keys, your AI key, a TLS private key, whatever anybody configured your plugins with. The settings
+        screen says exactly that, in those words. Encrypted is the default.</p>
       <p>Two things on your hub are excluded from a backup by name, so they cannot reach the service even
         inside a sealed blob: <b>the conversation log</b>, and <b>the hub's own usage history</b>. That
         exclusion is enforced in both directions, including on restore.</p>
@@ -503,6 +531,12 @@
               logging switch is set. The phone app depends on it.</li>
             <li><b>Anything you build on top.</b> A rule or a webhook that fires when somebody speaks can send
               those words wherever you pointed it, and nothing here constrains that.</li>
+            <li><b>A plugin you installed, and the household names it is handed.</b> A plugin is an
+              ordinary program with your hub's own privileges — no sandbox, no permission prompt, and no
+              packaging or signing choice changes that. Configuring one hands it what you typed and the name
+              your account goes by, so it can address you by name; it may log that, keep it, or send it
+              anywhere, and nothing here notices. It is the one party on this page we cannot name in
+              advance, because you choose it.</li>
           </ul>
         </div>
       </div>
